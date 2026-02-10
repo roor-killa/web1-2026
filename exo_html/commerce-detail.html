@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>La Boulangerie du Village - Informations</title>
+</head>
+<body>
+    <!-- Fil d'Ariane (breadcrumb) -->
+    <nav class="breadcrumb" aria-label="Fil d'Ariane">
+        <ul>
+            <li><a href="#" aria-label="Aller à la page d'accueil">Accueil</a></li>
+            <li><a href="#" aria-label="Voir tous les commerces">Commerces</a></li>
+            <li><a href="#" aria-label="Voir toutes les boulangeries">Boulangeries</a></li>
+            <li class="current" aria-current="page">La Boulangerie du Village</li>
+        </ul>
+    </nav>
+
+    <!-- En-tête avec le nom du commerce -->
+    <header role="banner">
+        <h1>La Boulangerie du Village</h1>
+        <p>Artisan boulanger depuis 1985</p>
+    </header>
+
+    <main class="container" role="main">
+        <!-- Informations complètes du commerce -->
+        <section class="business-info" aria-labelledby="info-title">
+            <h2 id="info-title">Informations du commerce</h2>
+            <div class="info-grid" role="list" aria-label="Détails du commerce">
+                <div class="info-item" role="listitem">
+                    <h3>Description</h3>
+                    <p>La Boulangerie du Village est une boulangerie artisanale traditionnelle située au cœur de la ville. Nous préparons nos pains, viennoiseries et pâtisseries quotidiennement avec des ingrédients de qualité et un savoir-faire transmis depuis trois générations.</p>
+                </div>
+                <div class="info-item" role="listitem">
+                    <h3>Adresse</h3>
+                    <p>12 Rue du Marché<br>75000 Paris</p>
+                </div>
+                <div class="info-item" role="listitem">
+                    <h3>Téléphone</h3>
+                    <p>01 23 45 67 89</p>
+                </div>
+                <div class="info-item" role="listitem">
+                    <h3>Email</h3>
+                    <p>contact@boulangerieduvillage.fr</p>
+                </div>
+                <div class="info-item" role="listitem">
+                    <h3>Spécialités</h3>
+                    <p>Pain au levain, baguette tradition, croissants au beurre, tarte aux fruits de saison, éclairs au chocolat.</p>
+                </div>
+                <div class="info-item" role="listitem">
+                    <h3>Services</h3>
+                    <p>Vente sur place, commandes pour événements, pain coupé, petite restauration (sandwichs, quiches).</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Galerie d'images (min 3 images) -->
+        <section class="gallery" aria-labelledby="gallery-title">
+            <h2 id="gallery-title">Galerie d'images</h2>
+            <div class="image-grid" role="list" aria-label="Galerie photos de la boulangerie">
+                <div class="image-item" role="listitem" aria-label="Photo de l'intérieur de la boulangerie">
+                    <img src="galerie d'image/bay_bridge.jpg" alt="Intérieur de la boulangerie avec présentoir de pains">
+                    <p>Notre boutique chaleureuse</p>
+                </div>
+                <div class="image-item" role="listitem" aria-label="Photo des produits de boulangerie">
+                    <img src="galerie d'image/boston.jpg" alt="Présentation des pains et viennoiseries artisanales">
+                    <p>Nos pains et viennoiseries faites maison</p>
+                </div>
+                <div class="image-item" role="listitem" aria-label="Photo des pâtisseries">
+                    <img src="galerie d'image/bay_bridge.jpg" alt="Sélection de pâtisseries et desserts">
+                    <p>Notre sélection de pâtisseries</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Horaires d'ouverture sous forme de tableau -->
+        <section class="hours" aria-labelledby="hours-title">
+            <h2 id="hours-title">Horaires d'ouverture</h2>
+            <table aria-label="Horaires d'ouverture de la boulangerie">
+                <thead>
+                    <tr>
+                        <th scope="col">Jour</th>
+                        <th scope="col">Matin</th>
+                        <th scope="col">Après-midi</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th scope="row">Lundi</th>
+                        <td>7h00 - 13h00</td>
+                        <td>Fermé</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Mardi</th>
+                        <td>6h30 - 13h00</td>
+                        <td>15h30 - 19h30</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Mercredi</th>
+                        <td>6h30 - 13h00</td>
+                        <td>15h30 - 19h30</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Jeudi</th>
+                        <td>6h30 - 13h00</td>
+                        <td>15h30 - 19h30</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Vendredi</th>
+                        <td>6h30 - 13h00</td>
+                        <td>15h30 - 19h30</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Samedi</th>
+                        <td>6h00 - 13h30</td>
+                        <td>15h00 - 19h30</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Dimanche</th>
+                        <td>7h00 - 13h00</td>
+                        <td>Fermé</td>
+                    </tr>
+                </tbody>
+            </table>
+            <p class="note">Fermé les jours fériés</p>
+        </section>
+
+        <!-- Formulaire de contact du commerce -->
+        <section class="contact-form" aria-labelledby="contact-title">
+            <h2 id="contact-title">Formulaire de contact</h2>
+            <form action="#" method="post" aria-label="Formulaire de contact de la boulangerie">
+                <div class="form-group">
+                    <label for="name">Nom et prénom *</label>
+                    <input type="text" id="name" name="name" required aria-required="true">
+                </div>
+                
+                <div class="form-group">
+                    <label for="email">Adresse email *</label>
+                    <input type="email" id="email" name="email" required aria-required="true">
+                </div>
+                
+                <div class="form-group">
+                    <label for="phone">Téléphone</label>
+                    <input type="tel" id="phone" name="phone">
+                </div>
+                
+                <div class="form-group">
+                    <label for="subject">Sujet *</label>
+                    <select id="subject" name="subject" required aria-required="true" aria-label="Sélectionnez le sujet de votre message">
+                        <option value="" disabled selected>Sélectionnez un sujet</option>
+                        <option value="reservation">Réservation/Commande</option>
+                        <option value="information">Demande d'information</option>
+                        <option value="event">Événement spécial</option>
+                        <option value="feedback">Retour/avis</option>
+                        <option value="other">Autre</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="message">Message *</label>
+                    <textarea id="message" name="message" rows="5" required aria-required="true" aria-label="Zone de texte pour votre message"></textarea>
+                </div>
+                
+                <div class="form-group checkbox">
+                    <input type="checkbox" id="newsletter" name="newsletter" aria-label="S'abonner à la newsletter">
+                    <label for="newsletter">Je souhaite m'abonner à la newsletter pour recevoir les actualités et promotions</label>
+                </div>
+                
+                <button type="submit" aria-label="Envoyer le formulaire de contact">Envoyer le message</button>
+            </form>
+        </section>
+    </main>
+
+    <footer role="contentinfo">
+        <p>© 2023 La Boulangerie du Village - Tous droits réservés</p>
+        <p>12 Rue du Marché, 75000 Paris - Tél: 01 23 45 67 89</p>
+    </footer>
+</body>
+</html>
