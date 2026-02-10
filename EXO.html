@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <!-- Encodage des caractères -->
+    <meta charset="UTF-8">
+
+    <!-- Adaptation aux écrans (mobile, tablette, PC) -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Description du site -->
+    <meta name="description" content="Découvrez les meilleurs commerces et services de Martinique">
+
+    <!-- Titre de l'onglet -->
+    <title>KaribConnect - Commerces de Martinique</title>
+</head>
+
+<body>
+
+    <!-- ===================== -->
+    <!-- EN-TÊTE DU SITE -->
+    <!-- ===================== -->
+    <header>
+        <h1>🌴 KaribConnect</h1>
+        <p>Votre guide des commerces martiniquais</p>
+    </header>
+
+    <!-- ===================== -->
+    <!-- MENU DE NAVIGATION -->
+    <!-- ===================== -->
+    <nav>
+        <ul>
+            <li><a href="#accueil">Accueil</a></li>
+            <li><a href="#commerces-vedettes">Commerces</a></li>
+            <li><a href="#categories">Catégories</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <!-- ===================== -->
+    <!-- CONTENU PRINCIPAL -->
+    <!-- ===================== -->
+    <main>
+
+        <!-- SECTION ACCUEIL -->
+        <section id="accueil">
+            <h2>Découvrez la Martinique autrement</h2>
+            <p>
+                Plus de 200 commerces locaux référencés à 
+                Fort-de-France, Lamentin et Schoelcher
+            </p>
+        </section>
+
+        <!-- ===================== -->
+        <!-- FORMULAIRE DE RECHERCHE -->
+        <!-- ===================== -->
+        <section id="recherche">
+            <h2>Trouvez votre commerce</h2>
+
+            <form>
+                <!-- Nom du commerce -->
+                <div>
+                    <label for="nom-commerce">Nom du commerce :</label><br>
+                    <input 
+                        type="text" 
+                        id="nom-commerce" 
+                        name="nom-commerce"
+                        placeholder="Ex: Restaurant, Coiffeur..."
+                    >
+                </div>
+
+                <br>
+
+                <!-- Ville -->
+                <div>
+                    <label for="ville">Ville :</label><br>
+                    <select id="ville" name="ville">
+                        <option value="">Toutes les villes</option>
+                        <option value="fort-de-france">Fort-de-France</option>
+                        <option value="lamentin">Lamentin</option>
+                        <option value="schoelcher">Schoelcher</option>
+                        <option value="ducos">Ducos</option>
+                        <option value="riviere-salee">Rivière-Salée</option>
+                    </select>
+                </div>
+
+                <br>
+
+                <!-- Catégorie -->
+                <div>
+                    <label for="categorie">Catégorie :</label><br>
+                    <select id="categorie" name="categorie">
+                        <option value="">Toutes catégories</option>
+                        <option value="restaurant">Restaurant</option>
+                        <option value="epicerie">Épicerie</option>
+                        <option value="services">Services</option>
+                    </select>
+                </div>
+
+                <br>
+
+                <!-- Boutons -->
+                <button type="submit">🔍 Rechercher</button>
+                <button type="reset">Réinitialiser</button>
+            </form>
+        </section>
+
+        <!-- ===================== -->
+        <!-- COMMERCES VEDETTES -->
+        <!-- ===================== -->
+        <section id="commerces-vedettes">
+            <h2>Commerces à la une</h2>
+
+            <!-- Commerce 1 -->
+            <article>
+                <h3>🍽️ La Savane Gourmande</h3>
+                <p><strong>Catégorie :</strong> Restaurant créole</p>
+                <p><strong>Adresse :</strong> Fort-de-France</p>
+                <p>
+                    Restaurant créole authentique.  
+                    Spécialités : colombo, accras, court-bouillon.
+                </p>
+                <button>Voir les détails</button>
+            </article>
+
+            <hr>
+
+            <!-- Commerce 2 -->
+            <article>
+                <h3>🛒 Epice Express</h3>
+                <p><strong>Catégorie :</strong> Épicerie locale</p>
+                <p><strong>Adresse :</strong> Lamentin</p>
+                <p>
+                    Fruits, légumes pays et épices créoles.  
+                    Livraison disponible.
+                </p>
+                <button>Voir les détails</button>
+            </article>
+
+            <hr>
+
+            <!-- Commerce 3 -->
+            <article>
+                <h3>🔧 TechKarib Réparation</h3>
+                <p><strong>Catégorie :</strong> Service</p>
+                <p><strong>Adresse :</strong> Schoelcher</p>
+                <p>
+                    Réparation de téléphones et ordinateurs.  
+                    Diagnostic gratuit.
+                </p>
+                <button>Voir les détails</button>
+            </article>
+        </section>
+
+        <!-- ===================== -->
+        <!-- CATEGORIES -->
+        <!-- ===================== -->
+        <section id="categories">
+            <h2>Explorer par catégorie</h2>
+
+            <ul>
+                <li>🍽️ Restaurants (42)</li>
+                <li>🛒 Épiceries (28)</li>
+                <li>💇 Beauté (35)</li>
+                <li>🔧 Services (51)</li>
+            </ul>
+        </section>
+
+    </main>
+
+    <!-- ===================== -->
+    <!-- PIED DE PAGE -->
+    <!-- ===================== -->
+    <footer id="contact">
+        <h3>À propos</h3>
+        <p>
+            KaribConnect est un projet étudiant de l'Université des Antilles
+            pour promouvoir les commerces locaux.
+        </p>
+
+        <h3>Contact</h3>
+        <p>Email : contact@karibconnect.fr</p>
+        <p>Téléphone : 0596 XX XX XX</p>
+
+        <p>
+            &copy; 2026 KaribConnect - L1 Informatique
+        </p>
+    </footer>
+
+</body>
+</html>
+
