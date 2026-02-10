@@ -108,6 +108,166 @@
         </section>
     </main>
 
+    <section id="recherche" aria-labelledby="titre-recherche">
+    <h2 id="titre-recherche">Trouvez votre commerce idéal</h2>
+    
+    <form class="search-form" action="/search" method="GET" role="search">
+        
+        <!-- Recherche textuelle -->
+        <fieldset>
+            <legend>Que recherchez-vous ?</legend>
+            
+            <div class="form-group">
+                <label for="query">
+                    Nom, produit ou service :
+                </label>
+                <input 
+                    type="search" 
+                    id="query" 
+                    name="q" 
+                    placeholder="Ex: Coiffeur, Restaurant créole..."
+                    autocomplete="off"
+                    aria-describedby="query-help"
+                >
+                <small id="query-help">
+                    Saisissez au moins 3 caractères pour lancer la recherche
+                </small>
+            </div>
+        </fieldset>
+
+        <!-- Localisation -->
+        <fieldset>
+            <legend>Où ?</legend>
+            
+            <div class="form-group">
+                <label for="ville">Ville :</label>
+                <select id="ville" name="ville" required>
+                    <option value="">Sélectionnez une ville</option>
+                    <optgroup label="Centre">
+                        <option value="fort-de-france">Fort-de-France</option>
+                        <option value="lamentin">Lamentin</option>
+                        <option value="schoelcher">Schoelcher</option>
+                    </optgroup>
+                    <optgroup label="Sud">
+                        <option value="ducos">Ducos</option>
+                        <option value="riviere-salee">Rivière-Salée</option>
+                        <option value="trois-ilets">Trois-Îlets</option>
+                    </optgroup>
+                    <optgroup label="Nord">
+                        <option value="trinite">Trinité</option>
+                        <option value="robert">Robert</option>
+                    </optgroup>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="rayon">Rayon de recherche :</label>
+                <input 
+                    type="range" 
+                    id="rayon" 
+                    name="rayon" 
+                    min="1" 
+                    max="20" 
+                    value="5"
+                    step="1"
+                    oninput="rayonValue.textContent = this.value"
+                >
+                <output id="rayonValue">5</output> km
+            </div>
+        </fieldset>
+
+        <!-- Catégorie et filtres -->
+        <fieldset>
+            <legend>Précisez votre recherche</legend>
+            
+            <div class="form-group">
+                <label for="categorie">Catégorie :</label>
+                <select id="categorie" name="categorie">
+                    <option value="">Toutes catégories</option>
+                    <option value="alimentation">🛒 Alimentation</option>
+                    <option value="restaurant">🍽️ Restaurants</option>
+                    <option value="vetements">👕 Vêtements</option>
+                    <option value="electronique">📱 Électronique</option>
+                    <option value="beaute">💇 Beauté & Bien-être</option>
+                    <option value="services">🔧 Services</option>
+                    <option value="sante">⚕️ Santé</option>
+                    <option value="loisirs">🎮 Loisirs</option>
+                </select>
+            </div>
+
+            <!-- Fourchette de prix -->
+            <div class="form-group">
+                <label>Gamme de prix :</label>
+                <div class="checkbox-group">
+                    <label>
+                        <input type="checkbox" name="prix[]" value="economique">
+                        € Économique
+                    </label>
+                    <label>
+                        <input type="checkbox" name="prix[]" value="moyen">
+                        €€ Moyen
+                    </label>
+                    <label>
+                        <input type="checkbox" name="prix[]" value="premium">
+                        €€€ Premium
+                    </label>
+                </div>
+            </div>
+
+            <!-- Services disponibles -->
+            <div class="form-group">
+                <label>Services :</label>
+                <div class="checkbox-group">
+                    <label>
+                        <input type="checkbox" name="services[]" value="livraison">
+                        🚚 Livraison
+                    </label>
+                    <label>
+                        <input type="checkbox" name="services[]" value="parking">
+                        🅿️ Parking
+                    </label>
+                    <label>
+                        <input type="checkbox" name="services[]" value="wifi">
+                        📶 WiFi gratuit
+                    </label>
+                    <label>
+                        <input type="checkbox" name="services[]" value="accessible">
+                        ♿ Accessible PMR
+                    </label>
+                </div>
+            </div>
+
+            <!-- Horaires d'ouverture -->
+            <div class="form-group">
+                <label>Ouvert maintenant :</label>
+                <div class="radio-group">
+                    <label>
+                        <input type="radio" name="ouverture" value="all" checked>
+                        Peu importe
+                    </label>
+                    <label>
+                        <input type="radio" name="ouverture" value="now">
+                        Actuellement ouvert
+                    </label>
+                    <label>
+                        <input type="radio" name="ouverture" value="today">
+                        Ouvert aujourd'hui
+                    </label>
+                </div>
+            </div>
+        </fieldset>
+
+        <!-- Boutons d'action -->
+        <div class="form-actions">
+            <button type="submit" class="btn-primary">
+                🔍 Rechercher
+            </button>
+            <button type="reset" class="btn-secondary">
+                ↺ Réinitialiser
+            </button>
+        </div>
+    </form>
+</section>
     <!-- Pied de page -->
     <footer role="contentinfo">
         <section class="footer-about">
