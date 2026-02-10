@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Découvrez les meilleurs commerces et services de Martinique">
+    <title>KaribConnect - Commerces de Martinique</title>
+</head>
+<body>
+    <!-- En-tête de la page -->
+    <header>
+        <h1>🌴 KaribConnect</h1>
+        <p>Votre guide des commerces martiniquais</p>
+    </header>
+
+    <!-- Navigation principale -->
+    <nav>
+        <ul>
+            <li><a href="#accueil">Accueil</a></li>
+            <li><a href="#commerces">Commerces</a></li>
+            <li><a href="#restaurants">Restaurants</a></li>
+            <li><a href="#services">Services</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <!-- Contenu principal -->
+    <main>
+        <!-- Section hero -->
+        <section id="accueil">
+            <h2>Découvrez la Martinique autrement</h2>
+            <p>Plus de 200 commerces locaux référencés à Fort-de-France, Lamentin et Schoelcher</p>
+        </section>
+
+        <section id="recherche">
+            <h2>Trouvez votre commerce</h2>
+    
+            <form>
+            <!-- Champ de recherche par nom -->
+            <div>
+                <label for="nom-commerce">Nom du commerce :</label>
+                <input 
+                    type="text" 
+                    id="nom-commerce" 
+                    name="nom-commerce" 
+                    placeholder="Ex: Restaurant, Coiffeur..."
+                >
+            </div>
+
+            <!-- Sélection de la ville -->
+            <div>
+                <label for="ville">Ville :</label>
+                <select id="ville" name="ville">
+                    <option value="">Toutes les villes</option>
+                    <option value="fort-de-france">Fort-de-France</option>
+                    <option value="lamentin">Lamentin</option>
+                    <option value="schoelcher">Schoelcher</option>
+                    <option value="ducos">Ducos</option>
+                    <option value="riviere-salee">Rivière-Salée</option>
+                </select>
+            </div>
+
+            <!-- Sélection de la catégorie -->
+            <div>
+                <label for="categorie">Catégorie :</label>
+                <select id="categorie" name="categorie">
+                    <option value="">Toutes catégories</option>
+                    <option value="restaurant">Restaurants</option>
+                    <option value="epicerie">Épiceries</option>
+                    <option value="vetements">Vêtements</option>
+                    <option value="electronique">Électronique</option>
+                    <option value="beaute">Beauté & Bien-être</option>
+                    <option value="services">Services</option>
+               </select>
+            </div>
+
+            <!-- Bouton de recherche -->
+            <button type="submit">🔍 Rechercher</button>
+            <button type="reset">Réinitialiser</button>
+        </form>
+        </section>
+
+            <section id="categories">
+        <h2>Explorer par catégorie</h2>
+    
+        <ul>
+            <li>
+                <a href="#restaurants">
+                    <span>🍽️</span>
+                    <strong>Restaurants</strong>
+                    <p>42 établissements</p>
+                </a>
+            </li>
+            <li>
+                <a href="#epiceries">
+                    <span>🛒</span>
+                    <strong>Épiceries</strong>
+                    <p>28 établissements</p>
+                </a>
+            </li>
+            <li>
+                <a href="#beaute">
+                    <span>💇</span>
+                    <strong>Beauté</strong>
+                    <p>35 établissements</p>
+                </a>
+            </li>
+            <li>
+                <a href="#services">
+                    <span>🔧</span>
+                    <strong>Services</strong>
+                    <p>51 établissements</p>
+                </a>
+            </li>
+        </ul>
+        </section>
+
+        <!-- Section commerces vedettes -->
+        <section id="commerces-vedettes">
+            <h2>Commerces à la une</h2>
+            <p>Découvrez nos partenaires vedettes</p>
+    
+        <!-- Commerce 1 : Restaurant -->
+        <article>
+            <h3>🍽️ La Savane Gourmande</h3>
+            <p><strong>Catégorie :</strong> Restaurant créole</p>
+            <p><strong>Adresse :</strong> 45 Rue Victor Hugo, Fort-de-France</p>
+            <p><strong>Téléphone :</strong> 0596 XX XX XX</p>
+            <p>
+                Restaurant créole authentique au cœur de Fort-de-France. 
+                Spécialités : colombo, court-bouillon, accras.
+            </p>
+            <button>Voir les détails</button>
+        </article>
+
+        <!-- Commerce 2 : Épicerie -->
+        <article>
+            <h3>🛒 Epice Express</h3>
+            <p><strong>Catégorie :</strong> Épicerie locale</p>
+            <p><strong>Adresse :</strong> 12 Avenue des Caraïbes, Lamentin</p>
+            <p><strong>Horaires :</strong> Lun-Sam 7h-20h</p>
+            <p>
+                Produits frais et locaux. Fruits, légumes pays, épices créoles.
+                Livraison à domicile disponible.
+            </p>
+        <button>Voir les détails</button>
+        </article>
+
+        <!-- Commerce 3 : Service -->
+        <article>
+            <h3>🔧 TechKarib Réparation</h3>
+            <p><strong>Catégorie :</strong> Réparation électronique</p>
+            <p><strong>Adresse :</strong> Zone Industrielle, Schoelcher</p>
+            <p><strong>Services :</strong> Smartphones, ordinateurs, tablettes</p>
+            <p>
+                Réparation rapide de vos appareils électroniques. 
+                Diagnostic gratuit, garantie 3 mois.
+            </p>
+            <button>Voir les détails</button>
+        </article>
+        </section>
+    </main>
+
+    <!-- Pied de page -->
+    <footer>
+        <p>&copy; 2026 KaribConnect - Université des Antilles</p>
+    </footer>
+</body>
+</html>
