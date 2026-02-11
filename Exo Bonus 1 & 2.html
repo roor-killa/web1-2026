@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Boulangerie Dupont - Détail du commerce</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- SEO -->
+    <meta name="description" content="Découvrez la Boulangerie Dupont à Paris : pains artisanaux, pâtisseries maison et viennoiseries fraîches. Contactez-nous au 01 23 45 67 89.">
+
+    <!-- Open Graph (Facebook) -->
+    <meta property="og:title" content="Boulangerie Dupont - Paris">
+    <meta property="og:description" content="Boulangerie artisanale à Paris. Pains frais et pâtisseries maison.">
+    <meta property="og:image" content="images/boulangerie1.jpg">
+    <meta property="og:type" content="business.business">
+
+    <!-- Données structurées Schema.org -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "LocalBusiness",
+      "name": "Boulangerie Dupont",
+      "image": "images/boulangerie1.jpg",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "3 Rue Lamartine",
+        "addressLocality": "Saint-Joseph",
+        "postalCode": "97212",
+        "addressCountry": "FR"
+      },
+      "telephone": "+569696051406",
+      "email": "bl.matthias972@gmail.com"
+    }
+    </script>
+
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        img { width: 200px; margin: 10px; }
+        table { border-collapse: collapse; width: 100%; max-width: 400px; }
+        th, td { border: 1px solid black; padding: 8px; text-align: center; }
+        form { max-width: 400px; }
+        input, textarea { width: 100%; margin-bottom: 10px; padding: 5px; }
+        button { padding: 8px 15px; }
+        nav a { text-decoration: none; color: blue; }
+    </style>
+</head>
+
+<body>
+
+<!-- Fil d'Ariane -->
+<nav aria-label="Fil d'Ariane">
+    <a href="index.html">Accueil</a> > 
+    <a href="commerces.html">Commerces</a> > 
+    <span>Boulangerie Dupont</span>
+</nav>
+
+<h1>Boulangerie Dupont</h1>
+
+<!-- Informations du commerce -->
+<section>
+    <h2>Informations</h2>
+    <p><strong>Adresse :</strong> 12 Rue de Paris, 75001 Paris</p>
+    <p><strong>Téléphone :</strong> <a href="tel:+33123456789">01 23 45 67 89</a></p>
+    <p><strong>Email :</strong> <a href="mailto:contact@boulangeriedupont.fr">contact@boulangeriedupont.fr</a></p>
+    <p><strong>Description :</strong> Boulangerie artisanale proposant pains frais, viennoiseries et pâtisseries maison.</p>
+</section>
+
+<!-- Galerie -->
+<section>
+    <h2>Galerie</h2>
+    <img src="images/boulangerie1.jpg" alt="Façade de la boulangerie" aria-label="Façade de la boulangerie">
+    <img src="images/boulangerie2.jpg" alt="Pains frais" aria-label="Pains frais">
+    <img src="images/boulangerie3.jpg" alt="Pâtisseries maison" aria-label="Pâtisseries maison">
+</section>
+
+<!-- Horaires -->
+<section>
+    <h2>Horaires d'ouverture</h2>
+    <table>
+        <tr>
+            <th>Jour</th>
+            <th>Horaires</th>
+        </tr>
+        <tr><td>Lundi</td><td>07h00 - 19h00</td></tr>
+        <tr><td>Mardi</td><td>07h00 - 19h00</td></tr>
+        <tr><td>Mercredi</td><td>Fermé</td></tr>
+        <tr><td>Jeudi</td><td>07h00 - 19h00</td></tr>
+        <tr><td>Vendredi</td><td>07h00 - 19h00</td></tr>
+        <tr><td>Samedi</td><td>08h00 - 18h00</td></tr>
+        <tr><td>Dimanche</td><td>08h00 - 13h00</td></tr>
+    </table>
+</section>
+
+<!-- Formulaire de contact -->
+<section>
+    <h2>Contactez-nous</h2>
+    <form action="#" method="post" aria-label="Formulaire de contact">
+        <label for="nom">Nom :</label>
+        <input type="text" id="nom" name="nom" required>
+
+        <label for="email">Email :</label>
+        <input type="email" id="email" name="email" required>
+
+        <label for="message">Message :</label>
+        <textarea id="message" name="message" rows="4" required></textarea>
+
+        <button type="submit">Envoyer</button>
+    </form>
+</section>
+
+</body>
+</html>
