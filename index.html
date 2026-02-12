@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fiche de Bienvenue - Smallville</title>
+    <style>
+        body { 
+            background: url('https://preview.redd.it/smallville-isnt-that-small-v0-blgpkyg6hmwe1.jpeg?width=1080&crop=smart&auto=webp&s=241860f324efae14eff508664aaab8b9e1be1501') no-repeat center center fixed;
+            background-size: cover;
+            font-family: system-ui, -apple-system, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            min-height: 100vh;
+            margin: 0;
+            padding-top: 50px;
+        }
+
+        /* Utilisation de <main> comme conteneur principal */
+        main { 
+            background: rgba(249, 247, 247, 0.95); 
+            padding: 40px; 
+            border-radius: 15px;
+            width: 100%;
+            max-width: 350px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+        }
+
+        figure { margin: 0 0 30px; text-align: center; }
+        
+        figure img { 
+            width: 130px; 
+            height: 130px; 
+            object-fit: cover; 
+            border-radius: 50%; 
+            border: 3px solid #ddd;
+        }
+
+        h1 { font-size: 1.5rem; text-align: center; color: #333; margin-bottom: 25px; }
+
+        /* Structure du formulaire propre */
+        .form-group { margin-bottom: 15px; }
+        
+        label { display: block; margin-bottom: 5px; font-weight: bold; color: #555; }
+        
+        input, textarea { 
+            width: 100%; 
+            padding: 10px; 
+            border: 1px solid #ccc; 
+            border-radius: 5px; 
+            box-sizing: border-box; /* Évite que le padding dépasse */
+        }
+
+        textarea { height: 80px; resize: vertical; }
+
+        button { 
+            width: 100%; 
+            padding: 12px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background 0.3s;
+            margin-top: 10px;
+        }
+
+        button:hover { background-color: #0056b3; }
+    </style>
+</head>
+<body>
+
+    <main>
+        <header>
+            <figure>
+                <img src="https://via.placeholder.com/150" alt="Portrait de Sébastien">
+            </figure>
+            <h1>Bienvenue à Smallville</h1>
+        </header>
+
+        <form action="https://formspree.io/f/ton_id" method="POST">
+            <div class="form-group">
+                <label for="nom">Nom</label>
+                <input type="text" id="nom" name="nom" required>
+            </div>
+
+            <div class="form-group">
+                <label for="prenom">Prénom</label>
+                <input type="text" id="prenom" name="prenom" required>
+            </div>
+
+            <div class="form-group">
+                <label for="description">Bio</label>
+                <textarea id="description" name="description"></textarea>
+            </div>
+
+            <button type="submit">Valider l'inscription</button>
+        </form>
+    </main>
+
+</body>
+</html>
