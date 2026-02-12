@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Annuaire des commerces locaux de Martinique">
+<title>KaribConnect - Annuaire Martinique</title>
+
+<style>
+body { font-family: Arial, sans-serif; margin:0; }
+
+/* Navigation */
+header { background:#006400; color:white; padding:15px; }
+nav a { color:white; margin-right:15px; text-decoration:none; }
+
+/* Sections */
+section { padding:40px; display:none; }
+section.active { display:block; }
+
+/* Skip link */
+.skip-link {
+position:absolute;
+left:-999px;
+top:10px;
+background:black;
+color:white;
+padding:8px;
+z-index:1000;
+}
+.skip-link:focus { left:10px; }
+
+/* Live region */
+.visually-hidden {
+position:absolute;
+left:-9999px;
+}
+
+/* Tableau */
+table { width:100%; border-collapse:collapse; }
+th, td { padding:10px; border:1px solid #ddd; }
+th { cursor:pointer; background:#f4f4f4; }
+tbody tr:nth-child(even) { background:#f9f9f9; }
+tbody tr:hover { background:#eef; }
+
+/* Formulaire multi-étapes */
+.progress-bar { width:100%; background:#eee; height:10px; margin-bottom:20px; }
+#progress { height:10px; width:0%; background:green; transition:0.3s; }
+.step { display:none; }
+.step-buttons { margin-top:15px; }
+button { padding:8px 15px; margin:5px; }
+</style>
+</head>
+
+<body>
+
+<a href="#contenu-principal" class="skip-link">
+Aller au contenu principal
+</a>
+
+<header>
+<h1>🌴 KaribConnect</h1>
+<nav>
+<a href="#" onclick="showSection('accueil')">Accueil</a>
+<a href="#" onclick="showSection('liste')">Liste des commerces</a>
+<a href="#" onclick="showSection('ajouter')">Ajouter un commerce</a>
+</nav>
+</header>
+
+<main id="contenu-principal">
+
+<div id="live-region" aria-live="polite" class="visually-hidden"></div>
+
+<!-- ================= ACCUEIL ================= -->
+<section id="accueil" class="active">
+<h2>Découvrez la Martinique autrement</h2>
+<p>Plus de 200 commerces locaux à Fort-de-France, Lamentin et Schoelcher.</p>
+<button onclick="showSection('liste')">Voir les commerces</button>
+</section>
+
+<!-- ================= LISTE / TABLEAU ================= -->
+<section id="liste">
+<h2>Liste complète des commerces</h2>
+
+<table id="commerceTable">
+<thead>
+<tr>
+<th data-sort="string" tabindex="0">Nom</th>
+<th data-sort="string" tabindex="0">Catégorie</th>
+<th data-sort="string" tabindex="0">Ville</th>
+<th data-sort="string" tabindex="0">Téléphone</th>
+<th data-sort="number" tabindex="0">Note</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>La Savane Gourmande</td>
+<td>Restaurant créole</td>
+<td>Fort-de-France</td>
+<td>0596 00 00 00</td>
+<td>4.5</td>
+</tr>
+<tr>
+<td>Tech Caraïbes</td>
+<td>Électronique</td>
+<td>Lamentin</td>
+<td>0596 11 22 33</td>
+<td>4.2</td>
+</tr>
+<tr>
+<td>Beauté Créole</td>
+<td>Beauté & Bien-être</td>
+<td>Schoelcher</td>
+<td>0596 44 55 66</td>
+<td>4.8</td>
+</tr>
+</tbody>
+</table>
+</section>
+
+<!-- ================= FORMULAIRE MULTI-ETAPES ================= -->
+<section id="ajouter">
+<h2>Ajouter votre commerce</h2>
+
+<div class="progress-bar">
+<div id="progress"></div>
+</div>
+
+<form id="commerceForm">
+
+<section class="step">
+<h3>1️⃣ Informations générales</h3>
+<label>Nom *</label><br>
+<input type="text" name="nom" required><br><br>
+
+<label>Description *</label><br>
+<textarea name="description" required></textarea>
+
+<div class="step-buttons">
+<button type="button" onclick="nextStep()">Suivant ➡</button>
+</div>
+</section>
+
+<section class="step">
+<h3>2️⃣ Coordonnées</h3>
+<label>Adresse *</label><br>
+<input type="text" name="adresse" required><br><br>
+
+<label>Téléphone *</label><br>
+<input type="tel" name="telephone" required>
+
+<div class="step-buttons">
+<button type="button" onclick="prevStep()">⬅ Précédent</button>
+<button type="button" onclick="nextStep()">Suivant ➡</button>
+</div>
+</section>
+
+<section class="step">
+<h3>3️⃣ Finalisation</h3>
+<label>
+<input type="checkbox" name="cgv" required>
+J'accepte les conditions générales *
+</label>
+
+<div class="step-buttons">
+<button type="button" onclick="prevStep()">⬅ Précédent</button>
+<button type="submit">✅ Publier</button>
+</div>
+</section>
+
+</form>
+</section>
+
+</main>
+
+<script>
+
+/* Navigation sections */
+function showSection(id){
+document.querySelectorAll("main > section")
+.forEach(sec=>sec.classList.remove("active"));
+document.getElementById(id).classList.add("active");
+announce("Section "+id+" affichée");
+}
+
+/* Live region */
+function announce(message){
+document.getElementById("live-region").textContent=message;
+}
+
+/* Tableau triable */
+document.querySelectorAll("th").forEach((header,index)=>{
+function sortTable(){
+const tbody=document.querySelector("#commerceTable tbody");
+const rows=Array.from(tbody.querySelectorAll("tr"));
+const type=header.dataset.sort;
+
+const sorted=rows.sort((a,b)=>{
+let A=a.children[index].innerText;
+let B=b.children[index].innerText;
+if(type==="number") return parseFloat(A)-parseFloat(B);
+return A.localeCompare(B);
+});
+tbody.append(...sorted);
+announce("Tri effectué sur "+header.innerText);
+}
+header.addEventListener("click",sortTable);
+header.addEventListener("keypress",e=>{
+if(e.key==="Enter") sortTable();
+});
+});
+
+/* Multi-étapes */
+const steps=document.querySelectorAll(".step");
+let currentStep=0;
+const progress=document.getElementById("progress");
+
+function showStep(index){
+steps.forEach((step,i)=>{
+step.style.display=i===index?"block":"none";
+});
+progress.style.width=((index+1)/steps.length)*100+"%";
+announce("Étape "+(index+1)+" affichée");
+}
+
+function nextStep(){
+if(currentStep<steps.length-1){
+currentStep++;
+showStep(currentStep);
+saveData();
+}
+}
+
+function prevStep(){
+if(currentStep>0){
+currentStep--;
+showStep(currentStep);
+}
+}
+
+function saveData(){
+const data=new FormData(document.getElementById("commerceForm"));
+localStorage.setItem("commerceForm",
+JSON.stringify(Object.fromEntries(data)));
+}
+
+function loadData(){
+const saved=JSON.parse(localStorage.getItem("commerceForm"));
+if(saved){
+Object.keys(saved).forEach(key=>{
+const field=document.querySelector(`[name="${key}"]`);
+if(field) field.value=saved[key];
+});
+}
+}
+
+document.getElementById("commerceForm")
+.addEventListener("submit",e=>{
+e.preventDefault();
+localStorage.removeItem("commerceForm");
+alert("Commerce enregistré !");
+});
+
+document.addEventListener("DOMContentLoaded",()=>{
+showStep(currentStep);
+loadData();
+});
+
+</script>
+
+</body>
+</html>
