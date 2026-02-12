@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Annuaire des commerces locaux de Martinique">
+    <title>KaribConnect - Découvrez les commerces martiniquais</title>
+    <style>
+    main > section {
+        padding: 3rem 0;
+        border-bottom: 2px solid #e0e0e0;
+    }
+
+    main > section:last-of-type {
+        border-bottom: none;
+    }
+</style>
+
+</head>
+<body>
+    <!-- En-tête principal du site -->
+    <header>
+        <div class="logo">
+            <h1>🌴 KaribConnect</h1>
+        </div>
+        
+        <nav aria-label="Navigation principale">
+            <ul>
+                <li><a href="index.html">Accueil</a></li>
+                <li><a href="commerces_liste.html">Commerces</a></li>
+                <li><a href="ajouter_commerce.html">Ajouter un commerce</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Contenu principal -->
+    <main id="contenu-principal">
+        <hr>
+        <!-- Section hero avec call-to-action -->
+        <section class="hero" aria-labelledby="titre-hero">
+            <h2 id="titre-hero">Découvrez la Martinique autrement</h2>
+            <p class="sous-titre">
+                Plus de 200 commerces locaux à votre portée de clic. Trouvez, explorez et soutenez les entreprises de votre île !
+            </p>
+            <a href="#recherche" class="cta-button">Commencer la recherche</a>
+        </section>
+
+        <!-- Grille de commerces -->
+        <section id="commerces-vedettes" aria-labelledby="titre-vedettes">
+            <h2 id="titre-vedettes">Commerces à la une</h2>
+            
+            <div class="commerce-grid">
+                <!-- Chaque commerce est un article autonome -->
+                <article class="commerce-card" itemscope itemtype="http://schema.org/LocalBusiness">
+                    <header>
+                        <h3 itemprop="name">La Savane Gourmande</h3>
+                        <span class="categorie" itemprop="category">Restaurant créole</span>
+                    </header>
+                    
+                    <div class="commerce-info">
+                        <p itemprop="address" itemscope itemtype="http://schema.org/PostalAddress">
+                            
+                    </div>
+                    
+                    <footer class="commerce-actions">
+                        <a href="commerce_details.html" class="btn-details">Voir les détails</a>
+                        <button class="btn-favoris" aria-label="Ajouter aux favoris">
+                            ⭐ Favoris
+                        </button>
+                    </footer>
+                </article>
+                <br />
+                 <article class="commerce-card" itemscope itemtype="http://schema.org/LocalBusiness">
+                    <header>
+                        <h3 itemprop="name">Autres </h3>
+                    </header>
+                    
+                    <div class="commerce-info">
+                        <p itemprop="address" itemscope itemtype="http://schema.org/PostalAddress">
+                            
+                    </div>
+                    
+                    <footer class="commerce-actions">
+                        <a href="commerces_liste.html" class="btn-details">Voir liste</a>
+                    </footer>
+                </article>
+            </div>
+        </section>
+
+        <!-- Catégories populaires -->
+        <section id="categories" aria-labelledby="titre-categories">
+            <h2 id="titre-categories">Explorer par catégorie</h2>
+            
+            <nav aria-label="Catégories de commerces">
+                <ul class="categorie-grid">
+                    <li>
+                        <a href="#restaurants">
+                            <figure>
+                                <span class="icone" aria-hidden="true">🍽️</span>
+                                <figcaption>
+                                    <strong>Restaurants</strong>
+                                    <data value="42">42 établissements</data>
+                                </figcaption>
+                            </figure>
+                        </a>
+                    </li>
+                    
+                    <li>
+                        <a href="#alimentaires">
+                            <figure>
+                                <span class="icone" aria-hidden="true">🛒</span>
+                                <figcaption>
+                                    <strong>Alimentaires</strong>
+                                    <data value="12">12 établissements</data>
+                                </figcaption>
+                            </figure>
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="#services">
+                            <figure>
+                                <span class="icone" aria-hidden="true">🔧</span>
+                                <figcaption>
+                                    <strong>Services</strong>
+                                    <data value="8">8 établissements</data>
+                                </figcaption>
+                            </figure>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#sante">
+                            <figure>
+                                <span class="icone" aria-hidden="true">⚕️</span>
+                                <figcaption>
+                                    <strong>Santé</strong>
+                                    <data value="5">5 établissements</data>
+                                </figcaption>
+                            </figure>
+                    </li> 
+                    <li>
+                        <a href="#beaute">
+                            <figure>
+                                <span class="icone" aria-hidden="true">💇</span>
+                                <figcaption>
+                                    <strong>Beauté</strong>
+                                    <data value="10">10 établissements</data>
+                                </figcaption>
+                            </figure>
+                    </li>
+                    <li>
+                        <a href="#loisirs">
+                            <figure>
+                                <span class="icone" aria-hidden="true">🎮</span>
+                                <figcaption>
+                                    <strong>Loisirs</strong>
+                                    <data value="7">7 établissements</data>
+                                </figcaption>
+                            </figure>
+                        </a>
+                    </li>   
+                    <li>
+                        <a href="#vetements">
+                            <figure>
+                                <span class="icone" aria-hidden="true">👕</span>
+                                <figcaption>
+                                    <strong>Vêtements</strong>
+                                    <data value="15">15 établissements</data>
+                                </figcaption>
+                            </figure>
+                    </li>
+                    <li>
+                        <a href="#electronique">
+                            <figure>
+                                <span class="icone" aria-hidden="true">📱</span>
+                                <figcaption>
+                                    <strong>Électronique</strong>
+                                    <data value="9">9 établissements</data>
+                                </figcaption>
+                            </figure>
+                        </a>
+                    </li>
+
+                    <!-- Autres catégories... -->
+                </ul>
+            </nav>
+        </section>
+    </main>
+    <hr>
+        <!-- Recherche textuelle -->
+        <section id="recherche" aria-labelledby="titre-recherche">
+            <h2 id="titre-recherche">Trouvez votre commerce</h2>
+        <fieldset>
+            <legend>Que recherchez-vous ?</legend>
+            
+            <div class="form-group">
+                <b><label for="query">
+                    Nom, produit ou service :
+                </label></b>
+                <input 
+                    type="search" 
+                    id="query" 
+                    name="q" 
+                    placeholder="Ex: Coiffeur, Restaurant..."
+                    autocomplete="off"
+                    aria-describedby="query-help"
+                >
+                <small id="query-help">
+                    Saisissez au moins 3 caractères pour lancer la recherche
+                </small>
+            </div>
+        </fieldset>
+
+        <!-- Localisation -->
+        <fieldset>
+            <legend>Où ?</legend>
+            
+            <div class="form-group">
+                <b><label for="ville">Ville :</label></b>
+                <select id="ville" name="ville" required>
+                    <option value="">Sélectionnez une ville</option>
+                    <optgroup label="Centre">
+                        <option value="fort-de-france">Fort-de-France</option>
+                        <option value="lamentin">Lamentin</option>
+                        <option value="schoelcher">Schoelcher</option>
+                    </optgroup>
+                    <optgroup label="Sud">
+                        <option value="ducos">Ducos</option>
+                        <option value="riviere-salee">Rivière-Salée</option>
+                        <option value="trois-ilets">Trois-Îlets</option>
+                    </optgroup>
+                    <optgroup label="Nord">
+                        <option value="trinite">Trinité</option>
+                        <option value="robert">Robert</option>
+                    </optgroup>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <b><label for="rayon">Rayon de recherche :</label></b>
+                <input 
+                    type="range" 
+                    id="rayon" 
+                    name="rayon" 
+                    min="1" 
+                    max="20" 
+                    value="5"
+                    step="1"
+                    oninput="rayonValue.textContent = this.value"
+                >
+                <output id="rayonValue">5</output> km
+            </div>
+        </fieldset>
+
+        <!-- Catégorie et filtres -->
+        <fieldset>
+            <legend>Précisez votre recherche</legend>
+            
+            <div class="form-group">
+                <b><label for="categorie">Catégorie :</label></b>
+                <select id="categorie" name="categorie">
+                    <option value="">Toutes catégories</option>
+                    <option value="alimentation">🛒 Alimentation</option>
+                    <option value="restaurant">🍽️ Restaurants</option>
+                    <option value="vetements">👕 Vêtements</option>
+                    <option value="electronique">📱 Électronique</option>
+                    <option value="beaute">💇 Beauté & Bien-être</option>
+                    <option value="services">🔧 Services</option>
+                    <option value="sante">⚕️ Santé</option>
+                    <option value="loisirs">🎮 Loisirs</option>
+                </select>
+            </div>
+
+            <!-- Fourchette de prix -->
+            <div class="form-group">
+                <b><label for="prix">Gamme de prix :</label></b>
+                <div class="checkbox-group">
+                    <label>
+                        <input type="checkbox" name="prix[]" value="economique">
+                        € Économique
+                    </label>
+                    <label>
+                        <input type="checkbox" name="prix[]" value="moyen">
+                        €€ Moyen
+                    </label>
+                    <label>
+                        <input type="checkbox" name="prix[]" value="premium">
+                        €€€ Premium
+                    </label>
+                </div>
+            </div>
+
+            <!-- Services disponibles -->
+            <div class="form-group">
+                <b><label for="services">Services :</label></b>
+                <div class="checkbox-group">
+                    <label>
+                        <input type="checkbox" name="services[]" value="livraison">
+                        🚚 Livraison
+                    </label>
+                    <label>
+                        <input type="checkbox" name="services[]" value="parking">
+                        🅿️ Parking
+                    </label>
+                    <label>
+                        <input type="checkbox" name="services[]" value="wifi">
+                        📶 WiFi gratuit
+                    </label>
+                    <label>
+                        <input type="checkbox" name="services[]" value="accessible">
+                        ♿ Accessible PMR
+                    </label>
+                </div>
+            </div>
+
+            <!-- Horaires d'ouverture -->
+            <div class="form-group">
+                <b><label for="ouverture">Ouvert maintenant :</label></b>
+                <div class="radio-group">
+                    <label>
+                        <input type="radio" name="ouverture" value="all" checked>
+                        Peu importe
+                    </label>
+                    <label>
+                        <input type="radio" name="ouverture" value="now">
+                        Actuellement ouvert
+                    </label>
+                    <label>
+                        <input type="radio" name="ouverture" value="today">
+                        Ouvert aujourd'hui
+                    </label>
+                </div>
+            </div>
+        </fieldset>
+
+        <!-- Boutons d'action -->
+        <div class="form-actions">
+            <button type="submit" class="btn-primary">
+                🔍 Rechercher
+            </button>
+            <button type="reset" class="btn-secondary">
+                ↺ Réinitialiser
+            </button>
+        </div>
+    </section>
+    <br /><hr><br /><br /><br />
+           <footer>
+        <section class="footer-about">
+            <h3>À propos de KaribConnect</h3>
+            <p>
+                Projet étudiant de l'Université des Antilles 
+                pour promouvoir les commerces locaux.
+            </p>
+        </section>
+        
+        <section class="footer-contact" id="contact">
+            <h3>Contactez-nous</h3>
+            <address>
+                Email : <a href="mailto:contact@karibconnect.fr">contact@karibconnect.fr</a><br>
+                Tél : <a href="tel:+596596000000">0596 11 22 33</a>
+            </address>
+        </section>
+        
+        <small>&copy; 2026 KaribConnect - L1 Informatique UA</small>
+        <br /><br />
+    </footer>
+    
+    <form class="search-form" action="/search" method="GET" role="search">
+    </form>
+</body>
+</html>

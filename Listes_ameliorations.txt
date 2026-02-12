@@ -1,0 +1,9 @@
+Liste des améliorations :
+
+1. Ajout de ligne entre les sections pour une meilleur visibilité 
+2. Restructuration de l'ordre des sections
+3. Tous les liens sont cliquables mis à part ceux de la section "Explorer par catégories", section qui a d'ailleurs été complété
+4. Informations détaillées du commerce à la une disponibles par un lien cliquable
+5. Création de la section "Trouver votre commerce"
+
+Sur les screenshots WAVE on constate que les erreurs et alertes sont dues à des liens cliquables qui ne sont reliés à des liens étant donné qu'ils n'existent pas. J'ai quand même laisser tel quel dans le cadre de l'exercice.
