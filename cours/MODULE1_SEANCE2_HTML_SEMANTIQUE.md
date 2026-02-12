@@ -34,13 +34,13 @@
 │    <nav> Navigation </nav>  │  Menu de navigation
 ├─────────────────────────────┤
 │         <main>              │  Contenu principal unique
-│  ┌─────────────────────┐   │
-│  │   <article>         │   │  Contenu autonome
-│  │     <section>       │   │  Section thématique
-│  │     </section>      │   │
-│  │     <aside>...</aside>  │  Contenu complémentaire
-│  │   </article>        │   │
-│  └─────────────────────┘   │
+│  ┌─────────────────────┐    │
+│  │   <article>         │    │  Contenu autonome
+│  │     <section>       │    │  Section thématique
+│  │     </section>      │    │
+│  │     <aside>...</aside>   │  Contenu complémentaire
+│  │   </article>        │    │
+│  └─────────────────────┘    │
 │         </main>             │
 ├─────────────────────────────┤
 │         <footer>            │  Pied de page

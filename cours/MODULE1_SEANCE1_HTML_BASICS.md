@@ -216,7 +216,7 @@ git commit -m "Initial commit: project structure"
 
     <!-- Commerce 2 : Épicerie -->
     <article>
-        <h3>🛒 Epice Express</h3>
+        <h3>🛒 Epicerie Express</h3>
         <p><strong>Catégorie :</strong> Épicerie locale</p>
         <p><strong>Adresse :</strong> 12 Avenue des Caraïbes, Lamentin</p>
         <p><strong>Horaires :</strong> Lun-Sam 7h-20h</p>
