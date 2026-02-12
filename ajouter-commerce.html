@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ajouter un commerce - KaribConnect</title>
+</head>
+<body>
+
+<header>
+    <h1>🌴 KaribConnect</h1>
+    <nav>
+        <a href="index.html">← Retour à l'accueil</a>
+    </nav>
+</header>
+
+<main>
+    <h2>Ajouter votre commerce</h2>
+    <p>Remplissez ce formulaire pour référencer votre établissement sur KaribConnect</p>
+
+    <form action="/api/commerces" method="POST" enctype="multipart/form-data">
+        
+        <!-- Étape 1 : Informations générales -->
+        <section>
+            <h3>1️⃣ Informations générales</h3>
+            
+            <div class="form-group">
+                <label for="nom-commerce">Nom du commerce * :</label>
+                <input 
+                    type="text" 
+                    id="nom-commerce" 
+                    name="nom" 
+                    required
+                    minlength="3"
+                    maxlength="100"
+                    placeholder="Ex: La Savane Gourmande"
+                >
+            </div>
+
+            <div class="form-group">
+                <label for="categorie">Catégorie * :</label>
+                <select id="categorie" name="categorie" required>
+                    <option value="">Sélectionnez une catégorie</option>
+                    <option value="alimentation">Alimentation</option>
+                    <option value="restaurant">Restaurant</option>
+                    <option value="vetements">Vêtements</option>
+                    <option value="electronique">Électronique</option>
+                    <option value="beaute">Beauté & Bien-être</option>
+                    <option value="services">Services</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="description">Description * :</label>
+                <textarea 
+                    id="description" 
+                    name="description" 
+                    required
+                    minlength="50"
+                    maxlength="500"
+                    rows="5"
+                    placeholder="Décrivez votre commerce, vos produits et services..."
+                ></textarea>
+                <small>Minimum 50 caractères</small>
+            </div>
+        </section>
+
+        <!-- Étape 2 : Coordonnées -->
+        <section>
+            <h3>2️⃣ Coordonnées</h3>
+            
+            <div class="form-group">
+                <label for="adresse">Adresse * :</label>
+                <input 
+                    type="text" 
+                    id="adresse" 
+                    name="adresse" 
+                    required
+                    placeholder="Numéro et nom de rue"
+                >
+            </div>
+
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="code-postal">Code postal * :</label>
+                    <input 
+                        type="text" 
+                        id="code-postal" 
+                        name="code-postal" 
+                        required
+                        pattern="972\d{2}"
+                        placeholder="97200"
+                    >
+                </div>
+
+                <div class="form-group">
+                    <label for="ville">Ville * :</label>
+                    <input 
+                        type="text" 
+                        id="ville" 
+                        name="ville" 
+                        required
+                        placeholder="Fort-de-France"
+                    >
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="telephone">Téléphone * :</label>
+                    <input 
+                        type="tel" 
+                        id="telephone" 
+                        name="telephone" 
+                        required
+                        pattern="0[5-7][0-9]{8}"
+                        placeholder="0596123456"
+                    >
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Email :</label>
+                    <input 
+                        type="email" 
+                        id="email" 
+                        name="email"
+                        placeholder="contact@exemple.com"
+                    >
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="site-web">Site web :</label>
+                <input 
+                    type="url" 
+                    id="site-web" 
+                    name="site-web"
+                    placeholder="https://www.exemple.com"
+                >
+            </div>
+        </section>
+
+        <!-- Étape 3 : Horaires -->
+        <section>
+            <h3>3️⃣ Horaires d'ouverture</h3>
+            
+            <fieldset>
+                <legend>Jours d'ouverture :</legend>
+                
+                <div class="horaires-group">
+                    <label>
+                        <input type="checkbox" name="jours[]" value="lundi" checked>
+                        Lundi
+                    </label>
+                    <input type="time" name="lundi-ouverture" value="08:00">
+                    à
+                    <input type="time" name="lundi-fermeture" value="18:00">
+                </div>
+
+                <div class="horaires-group">
+                    <label>
+                        <input type="checkbox" name="jours[]" value="mardi" checked>
+                        Mardi
+                    </label>
+                    <input type="time" name="mardi-ouverture" value="08:00">
+                    à
+                    <input type="time" name="mardi-fermeture" value="18:00">
+                </div>
+
+                <!-- Répéter pour les autres jours -->
+                
+                <div class="horaires-group">
+                    <label>
+                        <input type="checkbox" name="jours[]" value="dimanche">
+                        Dimanche
+                    </label>
+                    <input type="time" name="dimanche-ouverture">
+                    à
+                    <input type="time" name="dimanche-fermeture">
+                </div>
+            </fieldset>
+        </section>
+
+        <!-- Étape 4 : Services et options -->
+        <section>
+            <h3>4️⃣ Services proposés</h3>
+            
+            <fieldset>
+                <legend>Sélectionnez tous les services disponibles :</legend>
+                
+                <div class="checkbox-grid">
+                    <label>
+                        <input type="checkbox" name="services[]" value="livraison">
+                        🚚 Livraison à domicile
+                    </label>
+                    <label>
+                        <input type="checkbox" name="services[]" value="click-collect">
+                        📦 Click & Collect
+                    </label>
+                    <label>
+                        <input type="checkbox" name="services[]" value="parking">
+                        🅿️ Parking disponible
+                    </label>
+                    <label>
+                        <input type="checkbox" name="services[]" value="wifi">
+                        📶 WiFi gratuit
+                    </label>
+                    <label>
+                        <input type="checkbox" name="services[]" value="cb">
+                        💳 Paiement CB
+                    </label>
+                    <label>
+                        <input type="checkbox" name="services[]" value="accessible">
+                        ♿ Accessible PMR
+                    </label>
+                </div>
+            </fieldset>
+
+            <div class="form-group">
+                <label for="gamme-prix">Gamme de prix :</label>
+                <select id="gamme-prix" name="gamme-prix">
+                    <option value="economique">€ Économique</option>
+                    <option value="moyen" selected>€€ Moyen</option>
+                    <option value="premium">€€€ Premium</option>
+                </select>
+            </div>
+        </section>
+
+        <!-- Étape 5 : Photos -->
+        <section>
+            <h3>5️⃣ Photos de votre commerce</h3>
+            
+            <div class="form-group">
+                <label for="photo-principale">Photo principale * :</label>
+                <input 
+                    type="file" 
+                    id="photo-principale" 
+                    name="photo-principale" 
+                    accept="image/jpeg,image/png,image/webp"
+                    required
+                >
+                <small>Formats acceptés : JPG, PNG, WebP (max 5 Mo)</small>
+            </div>
+
+            <div class="form-group">
+                <label for="photos-galerie">Galerie photos (optionnel) :</label>
+                <input 
+                    type="file" 
+                    id="photos-galerie" 
+                    name="photos-galerie" 
+                    accept="image/jpeg,image/png,image/webp"
+                    multiple
+                >
+                <small>Ajoutez jusqu'à 10 photos supplémentaires</small>
+            </div>
+        </section>
+
+        <!-- Conditions -->
+        <section>
+            <div class="form-group">
+                <label>
+                    <input type="checkbox" name="cgv" required>
+                    J'accepte les <a href="cgv.html" target="_blank">conditions générales d'utilisation</a> *
+                </label>
+            </div>
+
+            <div class="form-group">
+                <label>
+                    <input type="checkbox" name="newsletter">
+                    Je souhaite recevoir les actualités de KaribConnect
+                </label>
+            </div>
+        </section>
+
+        <!-- Actions finales -->
+        <div class="form-actions">
+            <button type="submit" class="btn-primary">
+                ✅ Publier mon commerce
+            </button>
+            <button type="reset" class="btn-secondary">
+                ↺ Réinitialiser le formulaire
+            </button>
+        </div>
+
+        <p class="form-note">
+            * Champs obligatoires<br>
+            Votre commerce sera vérifié avant publication (délai 24-48h)
+        </p>
+    </form>
+</main>
+
+<footer>
+    <p>&copy; 2026 KaribConnect</p>
+</footer>
+
+</body>
+</html>
