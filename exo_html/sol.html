@@ -1,0 +1,1084 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ajouter un commerce - KaribConnect</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        header {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 30px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        header h1 {
+            color: #667eea;
+            margin-bottom: 10px;
+        }
+
+        header nav a {
+            color: #764ba2;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        header nav a:hover {
+            color: #667eea;
+        }
+
+        main {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+        }
+
+        main > h2 {
+            color: #333;
+            margin-bottom: 10px;
+            text-align: center;
+        }
+
+        main > p {
+            text-align: center;
+            color: #666;
+            margin-bottom: 30px;
+        }
+
+        /* BARRE DE PROGRESSION */
+        .progress-container {
+            margin-bottom: 30px;
+        }
+
+        .step-indicator {
+            text-align: center;
+            margin-bottom: 15px;
+            color: #666;
+            font-size: 14px;
+            font-weight: 500;
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 10px;
+            background: #e0e0e0;
+            border-radius: 10px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .progress-bar-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
+            transition: width 0.4s ease;
+            border-radius: 10px;
+        }
+
+        /* ÉTAPES DU FORMULAIRE */
+        .form-step {
+            display: none;
+        }
+
+        .form-step.active {
+            display: block;
+            animation: slideIn 0.4s ease;
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateX(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        section h3 {
+            color: #667eea;
+            margin-bottom: 25px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #e0e0e0;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            color: #555;
+            font-weight: 500;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        input[type="tel"],
+        input[type="url"],
+        input[type="time"],
+        select,
+        textarea {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #e0e0e0;
+            border-radius: 5px;
+            font-size: 14px;
+            transition: border-color 0.3s;
+            font-family: inherit;
+        }
+
+        input:focus,
+        select:focus,
+        textarea:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+
+        textarea {
+            resize: vertical;
+        }
+
+        small {
+            display: block;
+            margin-top: 5px;
+            color: #999;
+            font-size: 12px;
+        }
+
+        /* HORAIRES */
+        fieldset {
+            border: 2px solid #e0e0e0;
+            border-radius: 5px;
+            padding: 15px;
+            margin-bottom: 20px;
+        }
+
+        legend {
+            color: #667eea;
+            font-weight: 600;
+            padding: 0 10px;
+        }
+
+        .horaires-group {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 15px;
+            padding: 10px;
+            background: #f9f9f9;
+            border-radius: 5px;
+        }
+
+        .horaires-group label {
+            margin: 0;
+            min-width: 100px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .horaires-group input[type="time"] {
+            width: auto;
+            padding: 8px;
+        }
+
+        /* CHECKBOXES */
+        .checkbox-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+        }
+
+        .checkbox-grid label {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px;
+            background: #f9f9f9;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .checkbox-grid label:hover {
+            background: #f0f0f0;
+        }
+
+        input[type="checkbox"] {
+            width: 18px;
+            height: 18px;
+            cursor: pointer;
+        }
+
+        /* FICHIERS */
+        input[type="file"] {
+            padding: 10px;
+            border: 2px dashed #e0e0e0;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        input[type="file"]:hover {
+            border-color: #667eea;
+        }
+
+        /* NAVIGATION */
+        .form-navigation {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 40px;
+            gap: 15px;
+            padding-top: 30px;
+            border-top: 2px solid #e0e0e0;
+        }
+
+        button {
+            padding: 14px 30px;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-weight: 600;
+        }
+
+        .btn-prev {
+            background: #e0e0e0;
+            color: #555;
+            min-width: 120px;
+        }
+
+        .btn-prev:hover:not(:disabled) {
+            background: #d0d0d0;
+            transform: translateY(-2px);
+        }
+
+        .btn-prev:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        .btn-next,
+        .btn-submit {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            flex: 1;
+            min-width: 120px;
+        }
+
+        .btn-next:hover,
+        .btn-submit:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+        }
+
+        .btn-secondary {
+            background: #e0e0e0;
+            color: #555;
+        }
+
+        .btn-secondary:hover {
+            background: #d0d0d0;
+        }
+
+        /* MESSAGE DE SUCCÈS */
+        .success-message {
+            display: none;
+            text-align: center;
+            padding: 40px 20px;
+        }
+
+        .success-message.show {
+            display: block;
+            animation: fadeIn 0.5s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .success-icon {
+            font-size: 80px;
+            margin-bottom: 20px;
+            animation: bounce 0.6s ease;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.2); }
+        }
+
+        .success-message h3 {
+            color: #4CAF50;
+            margin-bottom: 10px;
+            font-size: 24px;
+        }
+
+        .success-message p {
+            color: #666;
+            font-size: 16px;
+        }
+
+        /* INDICATEUR DE SAUVEGARDE */
+        .save-indicator {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            opacity: 0;
+            transition: opacity 0.3s;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            z-index: 1000;
+        }
+
+        .save-indicator.show {
+            opacity: 1;
+        }
+
+        footer {
+            text-align: center;
+            color: white;
+            margin-top: 30px;
+            padding: 20px;
+        }
+
+        /* VALIDATION VISUELLE */
+        input.error,
+        select.error,
+        textarea.error {
+            border-color: #ff4444 !important;
+            animation: shake 0.3s ease;
+        }
+
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            25% { transform: translateX(-10px); }
+            75% { transform: translateX(10px); }
+        }
+
+        .form-note {
+            text-align: center;
+            color: #999;
+            font-size: 13px;
+            margin-top: 20px;
+            line-height: 1.6;
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 768px) {
+            main {
+                padding: 20px;
+            }
+
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+
+            .checkbox-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .form-navigation {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head> -->
+<body>
+
+<header>
+    <h1>🌴 KaribConnect</h1>
+    <nav>
+        <a href="index.html">← Retour à l'accueil</a>
+    </nav>
+</header>
+
+<!-- INDICATEUR DE SAUVEGARDE -->
+<div class="save-indicator" id="saveIndicator">
+    💾 Sauvegardé automatiquement
+</div>
+
+<main>
+    <h2>Ajouter votre commerce</h2>
+    <p>Remplissez ce formulaire pour référencer votre établissement sur KaribConnect</p>
+
+    <!-- BARRE DE PROGRESSION -->
+    <div class="progress-container">
+        <div class="step-indicator">
+            Étape <span id="currentStep">1</span> sur <span id="totalSteps">5</span>
+        </div>
+        <div class="progress-bar">
+            <div class="progress-bar-fill" id="progressFill"></div>
+        </div>
+    </div>
+
+    <form id="multiStepForm" action="/api/commerces" method="POST" enctype="multipart/form-data">
+        
+        <!-- ÉTAPE 1 : Informations générales -->
+        <div class="form-step active" data-step="1">
+            <section>
+                <h3>1️⃣ Informations générales</h3>
+                
+                <div class="form-group">
+                    <label for="nom-commerce">Nom du commerce * :</label>
+                    <input 
+                        type="text" 
+                        id="nom-commerce" 
+                        name="nom" 
+                        required
+                        minlength="3"
+                        maxlength="100"
+                        placeholder="Ex: La Savane Gourmande"
+                    >
+                </div>
+
+                <div class="form-group">
+                    <label for="categorie">Catégorie * :</label>
+                    <select id="categorie" name="categorie" required>
+                        <option value="">Sélectionnez une catégorie</option>
+                        <option value="alimentation">Alimentation</option>
+                        <option value="restaurant">Restaurant</option>
+                        <option value="vetements">Vêtements</option>
+                        <option value="electronique">Électronique</option>
+                        <option value="beaute">Beauté & Bien-être</option>
+                        <option value="services">Services</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="description">Description * :</label>
+                    <textarea 
+                        id="description" 
+                        name="description" 
+                        required
+                        minlength="50"
+                        maxlength="500"
+                        rows="5"
+                        placeholder="Décrivez votre commerce, vos produits et services..."
+                    ></textarea>
+                    <small>Minimum 50 caractères</small>
+                </div>
+            </section>
+        </div>
+
+        <!-- ÉTAPE 2 : Coordonnées -->
+        <div class="form-step" data-step="2">
+            <section>
+                <h3>2️⃣ Coordonnées</h3>
+                
+                <div class="form-group">
+                    <label for="adresse">Adresse * :</label>
+                    <input 
+                        type="text" 
+                        id="adresse" 
+                        name="adresse" 
+                        required
+                        placeholder="Numéro et nom de rue"
+                    >
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="code-postal">Code postal * :</label>
+                        <input 
+                            type="text" 
+                            id="code-postal" 
+                            name="code-postal" 
+                            required
+                            pattern="972\d{2}"
+                            placeholder="97200"
+                        >
+                    </div>
+
+                    <div class="form-group">
+                        <label for="ville">Ville * :</label>
+                        <input 
+                            type="text" 
+                            id="ville" 
+                            name="ville" 
+                            required
+                            placeholder="Fort-de-France"
+                        >
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="telephone">Téléphone * :</label>
+                        <input 
+                            type="tel" 
+                            id="telephone" 
+                            name="telephone" 
+                            required
+                            pattern="0[5-7][0-9]{8}"
+                            placeholder="0596123456"
+                        >
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email">Email :</label>
+                        <input 
+                            type="email" 
+                            id="email" 
+                            name="email"
+                            placeholder="contact@exemple.com"
+                        >
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="site-web">Site web :</label>
+                    <input 
+                        type="url" 
+                        id="site-web" 
+                        name="site-web"
+                        placeholder="https://www.exemple.com"
+                    >
+                </div>
+            </section>
+        </div>
+
+        <!-- ÉTAPE 3 : Horaires -->
+        <div class="form-step" data-step="3">
+            <section>
+                <h3>3️⃣ Horaires d'ouverture</h3>
+                
+                <fieldset>
+                    <legend>Jours d'ouverture :</legend>
+                    
+                    <div class="horaires-group">
+                        <label>
+                            <input type="checkbox" name="jours[]" value="lundi" checked>
+                            Lundi
+                        </label>
+                        <input type="time" name="lundi-ouverture" value="08:00">
+                        à
+                        <input type="time" name="lundi-fermeture" value="18:00">
+                    </div>
+
+                    <div class="horaires-group">
+                        <label>
+                            <input type="checkbox" name="jours[]" value="mardi" checked>
+                            Mardi
+                        </label>
+                        <input type="time" name="mardi-ouverture" value="08:00">
+                        à
+                        <input type="time" name="mardi-fermeture" value="18:00">
+                    </div>
+
+                    <div class="horaires-group">
+                        <label>
+                            <input type="checkbox" name="jours[]" value="mercredi" checked>
+                            Mercredi
+                        </label>
+                        <input type="time" name="mercredi-ouverture" value="08:00">
+                        à
+                        <input type="time" name="mercredi-fermeture" value="18:00">
+                    </div>
+
+                    <div class="horaires-group">
+                        <label>
+                            <input type="checkbox" name="jours[]" value="jeudi" checked>
+                            Jeudi
+                        </label>
+                        <input type="time" name="jeudi-ouverture" value="08:00">
+                        à
+                        <input type="time" name="jeudi-fermeture" value="18:00">
+                    </div>
+
+                    <div class="horaires-group">
+                        <label>
+                            <input type="checkbox" name="jours[]" value="vendredi" checked>
+                            Vendredi
+                        </label>
+                        <input type="time" name="vendredi-ouverture" value="08:00">
+                        à
+                        <input type="time" name="vendredi-fermeture" value="18:00">
+                    </div>
+
+                    <div class="horaires-group">
+                        <label>
+                            <input type="checkbox" name="jours[]" value="samedi">
+                            Samedi
+                        </label>
+                        <input type="time" name="samedi-ouverture" value="08:00">
+                        à
+                        <input type="time" name="samedi-fermeture" value="13:00">
+                    </div>
+                    
+                    <div class="horaires-group">
+                        <label>
+                            <input type="checkbox" name="jours[]" value="dimanche">
+                            Dimanche
+                        </label>
+                        <input type="time" name="dimanche-ouverture">
+                        à
+                        <input type="time" name="dimanche-fermeture">
+                    </div>
+                </fieldset>
+            </section>
+        </div>
+
+        <!-- ÉTAPE 4 : Services et options -->
+        <div class="form-step" data-step="4">
+            <section>
+                <h3>4️⃣ Services proposés</h3>
+                
+                <fieldset>
+                    <legend>Sélectionnez tous les services disponibles :</legend>
+                    
+                    <div class="checkbox-grid">
+                        <label>
+                            <input type="checkbox" name="services[]" value="livraison">
+                            🚚 Livraison à domicile
+                        </label>
+                        <label>
+                            <input type="checkbox" name="services[]" value="click-collect">
+                            📦 Click & Collect
+                        </label>
+                        <label>
+                            <input type="checkbox" name="services[]" value="parking">
+                            🅿️ Parking disponible
+                        </label>
+                        <label>
+                            <input type="checkbox" name="services[]" value="wifi">
+                            📶 WiFi gratuit
+                        </label>
+                        <label>
+                            <input type="checkbox" name="services[]" value="cb">
+                            💳 Paiement CB
+                        </label>
+                        <label>
+                            <input type="checkbox" name="services[]" value="accessible">
+                            ♿ Accessible PMR
+                        </label>
+                    </div>
+                </fieldset>
+
+                <div class="form-group">
+                    <label for="gamme-prix">Gamme de prix :</label>
+                    <select id="gamme-prix" name="gamme-prix">
+                        <option value="economique">€ Économique</option>
+                        <option value="moyen" selected>€€ Moyen</option>
+                        <option value="premium">€€€ Premium</option>
+                    </select>
+                </div>
+            </section>
+        </div>
+
+        <!-- ÉTAPE 5 : Photos et Conditions -->
+        <div class="form-step" data-step="5">
+            <section>
+                <h3>5️⃣ Photos et finalisation</h3>
+                
+                <div class="form-group">
+                    <label for="photo-principale">Photo principale * :</label>
+                    <input 
+                        type="file" 
+                        id="photo-principale" 
+                        name="photo-principale" 
+                        accept="image/jpeg,image/png,image/webp"
+                        required
+                    >
+                    <small>Formats acceptés : JPG, PNG, WebP (max 5 Mo)</small>
+                </div>
+
+                <div class="form-group">
+                    <label for="photos-galerie">Galerie photos (optionnel) :</label>
+                    <input 
+                        type="file" 
+                        id="photos-galerie" 
+                        name="photos-galerie" 
+                        accept="image/jpeg,image/png,image/webp"
+                        multiple
+                    >
+                    <small>Ajoutez jusqu'à 10 photos supplémentaires</small>
+                </div>
+
+                <div class="form-group" style="margin-top: 30px;">
+                    <label>
+                        <input type="checkbox" name="cgv" id="cgv" required>
+                        J'accepte les <a href="cgv.html" target="_blank">conditions générales d'utilisation</a> *
+                    </label>
+                </div>
+
+                <div class="form-group">
+                    <label>
+                        <input type="checkbox" name="newsletter">
+                        Je souhaite recevoir les actualités de KaribConnect
+                    </label>
+                </div>
+            </section>
+        </div>
+
+        <!-- NAVIGATION -->
+        <div class="form-navigation">
+            <button type="button" class="btn-prev" id="prevBtn" disabled>
+                ← Précédent
+            </button>
+            <button type="button" class="btn-next" id="nextBtn">
+                Suivant →
+            </button>
+            <button type="submit" class="btn-submit" id="submitBtn" style="display: none;">
+                ✅ Publier mon commerce
+            </button>
+        </div>
+
+        <p class="form-note">
+            * Champs obligatoires<br>
+            Votre commerce sera vérifié avant publication (délai 24-48h)
+        </p>
+    </form>
+
+    <!-- MESSAGE DE SUCCÈS -->
+    <div class="success-message" id="successMessage">
+        <div class="success-icon">✅</div>
+        <h3>Commerce ajouté avec succès !</h3>
+        <p>Votre établissement sera vérifié dans les 24-48h et publié sur KaribConnect.</p>
+        <p style="margin-top: 10px;">Vous allez être redirigé...</p>
+    </div>
+</main>
+
+<footer>
+    <p>&copy; 2026 KaribConnect - Connectons les commerces locaux 🌴</p>
+</footer>
+
+ <script>
+// ========================================
+// VARIABLES GLOBALES
+// ========================================
+let currentStep = 1;
+const totalSteps = 5;
+const form = document.getElementById('multiStepForm');
+const steps = document.querySelectorAll('.form-step');
+const prevBtn = document.getElementById('prevBtn');
+const nextBtn = document.getElementById('nextBtn');
+const submitBtn = document.getElementById('submitBtn');
+const progressFill = document.getElementById('progressFill');
+const saveIndicator = document.getElementById('saveIndicator');
+
+// ========================================
+// INITIALISATION
+// ========================================
+document.addEventListener('DOMContentLoaded', function() {
+    loadFormData();
+    updateForm();
+});
+
+// ========================================
+// SAUVEGARDE AUTOMATIQUE
+// ========================================
+let saveTimeout;
+
+form.addEventListener('input', function(e) {
+    // Annuler le timeout précédent
+    clearTimeout(saveTimeout);
+    
+    // Attendre 500ms après la dernière frappe avant de sauvegarder
+    saveTimeout = setTimeout(() => {
+        saveFormData();
+        showSaveIndicator();
+    }, 500);
+});
+
+function saveFormData() {
+    const formData = new FormData(form);
+    const data = {};
+    
+    // Sauvegarder tous les champs sauf les fichiers
+    for (let [key, value] of formData.entries()) {
+        // Ignorer les fichiers (ne peuvent pas être sauvegardés dans localStorage)
+        if (form.elements[key] && form.elements[key].type !== 'file') {
+            // Gérer les checkboxes multiples
+            if (key.endsWith('[]')) {
+                if (!data[key]) {
+                    data[key] = [];
+                }
+                data[key].push(value);
+            } else {
+                data[key] = value;
+            }
+        }
+    }
+    
+    // Sauvegarder l'étape actuelle
+    data._currentStep = currentStep;
+    
+    localStorage.setItem('karibconnect_form', JSON.stringify(data));
+    console.log('💾 Données sauvegardées');
+}
+
+function loadFormData() {
+    const savedData = localStorage.getItem('karibconnect_form');
+    
+    if (savedData) {
+        const data = JSON.parse(savedData);
+        
+        // Restaurer l'étape
+        if (data._currentStep) {
+            currentStep = data._currentStep;
+        }
+        
+        // Remplir les champs
+        Object.keys(data).forEach(key => {
+            if (key === '_currentStep') return;
+            
+            const elements = form.elements[key];
+            
+            if (!elements) return;
+            
+            // Gérer les checkboxes multiples
+            if (key.endsWith('[]')) {
+                if (NodeList.prototype.isPrototypeOf(elements)) {
+                    elements.forEach(el => {
+                        if (data[key].includes(el.value)) {
+                            el.checked = true;
+                        }
+                    });
+                }
+            }
+            // Gérer les checkboxes simples
+            else if (elements.type === 'checkbox') {
+                elements.checked = data[key] === 'on' || data[key] === true;
+            }
+            // Gérer les autres champs
+            else {
+                elements.value = data[key];
+            }
+        });
+        
+        console.log('📂 Données chargées');
+    }
+}
+
+function showSaveIndicator() {
+    saveIndicator.classList.add('show');
+    
+    setTimeout(() => {
+        saveIndicator.classList.remove('show');
+    }, 2000);
+}
+
+// ========================================
+// NAVIGATION
+// ========================================
+nextBtn.addEventListener('click', function() {
+    if (validateCurrentStep()) {
+        if (currentStep < totalSteps) {
+            currentStep++;
+            updateForm();
+            saveFormData(); // Sauvegarder à chaque changement d'étape
+        }
+    }
+});
+
+prevBtn.addEventListener('click', function() {
+    if (currentStep > 1) {
+        currentStep--;
+        updateForm();
+    }
+});
+
+// ========================================
+// MISE À JOUR DE L'AFFICHAGE
+// ========================================
+function updateForm() {
+    // Masquer toutes les étapes
+    steps.forEach(step => step.classList.remove('active'));
+    
+    // Afficher l'étape courante
+    const currentStepElement = document.querySelector(`[data-step="${currentStep}"]`);
+    currentStepElement.classList.add('active');
+    
+    // Mettre à jour l'indicateur
+    document.getElementById('currentStep').textContent = currentStep;
+    document.getElementById('totalSteps').textContent = totalSteps;
+    
+    // Mettre à jour la barre de progression
+    const progress = (currentStep / totalSteps) * 100;
+    progressFill.style.width = progress + '%';
+    
+    // Gérer les boutons
+    prevBtn.disabled = currentStep === 1;
+    
+    if (currentStep === totalSteps) {
+        nextBtn.style.display = 'none';
+        submitBtn.style.display = 'block';
+    } else {
+        nextBtn.style.display = 'block';
+        submitBtn.style.display = 'none';
+    }
+    
+    // Scroll vers le haut
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+// ========================================
+// VALIDATION
+// ========================================
+function validateCurrentStep() {
+    const currentStepElement = document.querySelector(`[data-step="${currentStep}"]`);
+    const inputs = currentStepElement.querySelectorAll('input[required], select[required], textarea[required]');
+    
+    let isValid = true;
+    let firstInvalidElement = null;
+    
+    inputs.forEach(input => {
+        // Retirer la classe d'erreur précédente
+        input.classList.remove('error');
+        
+        // Vérifier si le champ est vide
+        if (!input.value.trim() && input.type !== 'checkbox' && input.type !== 'file') {
+            input.classList.add('error');
+            isValid = false;
+            if (!firstInvalidElement) firstInvalidElement = input;
+        }
+        // Vérifier les checkboxes
+        else if (input.type === 'checkbox' && input.hasAttribute('required') && !input.checked) {
+            input.classList.add('error');
+            isValid = false;
+            if (!firstInvalidElement) firstInvalidElement = input;
+        }
+        // Vérifier les fichiers requis
+        else if (input.type === 'file' && input.hasAttribute('required') && input.files.length === 0) {
+            input.classList.add('error');
+            isValid = false;
+            if (!firstInvalidElement) firstInvalidElement = input;
+        }
+        // Vérifier le pattern (regex)
+        else if (input.hasAttribute('pattern')) {
+            const pattern = new RegExp(input.getAttribute('pattern'));
+            if (!pattern.test(input.value)) {
+                input.classList.add('error');
+                isValid = false;
+                if (!firstInvalidElement) firstInvalidElement = input;
+            }
+        }
+        // Vérifier la longueur minimale
+        else if (input.hasAttribute('minlength')) {
+            const minLength = parseInt(input.getAttribute('minlength'));
+            if (input.value.length < minLength) {
+                input.classList.add('error');
+                isValid = false;
+                if (!firstInvalidElement) firstInvalidElement = input;
+            }
+        }
+    });
+    
+    if (!isValid) {
+        alert('⚠️ Veuillez remplir tous les champs obligatoires correctement.');
+        if (firstInvalidElement) {
+            firstInvalidElement.focus();
+        }
+    }
+    
+    return isValid;
+}
+
+// Retirer la classe error quand l'utilisateur corrige
+form.addEventListener('input', function(e) {
+    if (e.target.classList.contains('error')) {
+        e.target.classList.remove('error');
+    }
+});
+
+// ========================================
+// SOUMISSION DU FORMULAIRE
+// ========================================
+form.addEventListener('submit', function(e) {
+    e.preventDefault();
+    
+    if (validateCurrentStep()) {
+        // Récupérer toutes les données
+        const formData = new FormData(form);
+        
+        // Simuler l'envoi (remplacer par votre vraie API)
+        console.log('📤 Envoi des données...');
+        
+        // Afficher toutes les données dans la console
+        for (let [key, value] of formData.entries()) {
+            console.log(`${key}: ${value}`);
+        }
+        
+        // Effacer le localStorage
+        localStorage.removeItem('karibconnect_form');
+        
+        // Masquer le formulaire
+        form.style.display = 'none';
+        document.querySelector('.progress-container').style.display = 'none';
+        
+        // Afficher le message de succès
+        document.getElementById('successMessage').classList.add('show');
+        
+        // Rediriger après 4 secondes
+        setTimeout(() => {
+            window.location.href = 'index.html';
+        }, 4000);
+    }
+});
+
+// ========================================
+// GESTION DES HORAIRES
+// ========================================
+// Désactiver les horaires si le jour n'est pas coché
+document.querySelectorAll('.horaires-group input[type="checkbox"]').forEach(checkbox => {
+    checkbox.addEventListener('change', function() {
+        const group = this.closest('.horaires-group');
+        const timeInputs = group.querySelectorAll('input[type="time"]');
+        
+        timeInputs.forEach(input => {
+            input.disabled = !this.checked;
+            if (!this.checked) {
+                input.value = '';
+            }
+        });
+    });
+});
+
+// ========================================
+// CONFIRMATION AVANT DE QUITTER
+// ========================================
+window.addEventListener('beforeunload', function(e) {
+    const savedData = localStorage.getItem('karibconnect_form');
+    
+    // Si des données sont sauvegardées et le formulaire n'est pas soumis
+    if (savedData && form.style.display !== 'none') {
+        e.preventDefault();
+        e.returnValue = 'Vous avez des modifications non soumises. Voulez-vous vraiment quitter ?';
+        return e.returnValue;
+    }
+});
+</script> -->
+
+</body>
+</html>
