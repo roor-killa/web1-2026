@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ajouter un commerce</title>
+
+<style>
+body {
+    font-family: Arial, sans-serif;
+    max-width: 600px;
+    margin: 40px auto;
+    line-height: 1.5;
+}
+
+/* ===== SKIP LINK ===== */
+.skip-link {
+    position: absolute;
+    left: -9999px;
+    top: auto;
+}
+.skip-link:focus {
+    left: 10px;
+    top: 10px;
+    background: black;
+    color: white;
+    padding: 10px;
+    z-index: 1000;
+}
+
+/* ===== PROGRESS BAR ===== */
+.progress-container {
+    background: #eee;
+    border-radius: 20px;
+    margin: 20px 0;
+    height: 12px;
+}
+.progress-bar {
+    height: 12px;
+    width: 0%;
+    background: #0077cc;
+    border-radius: 20px;
+    transition: width 0.3s ease;
+}
+
+/* ===== STEPS ===== */
+.step { display: none; }
+.step.active { display: block; }
+
+.buttons {
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-between;
+}
+
+input {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+button {
+    padding: 8px 15px;
+    border: none;
+    background: #0077cc;
+    color: white;
+    border-radius: 4px;
+    cursor: pointer;
+}
+button:disabled {
+    background: #aaa;
+}
+
+/* ===== SR ONLY ===== */
+.sr-only {
+    position: absolute;
+    left: -9999px;
+}
+</style>
+</head>
+
+<body>
+
+<!-- ===== 1️⃣ SKIP LINK ===== -->
+<a href="#mainContent" class="skip-link">Aller au contenu principal</a>
+
+<main id="mainContent">
+
+<h1>Ajouter un commerce</h1>
+
+<!-- ===== 2️⃣ LIVE REGION ===== -->
+<div id="liveRegion" class="sr-only" aria-live="polite"></div>
+
+<!-- ===== BARRE DE PROGRESSION ACCESSIBLE ===== -->
+<div class="progress-container"
+     role="progressbar"
+     aria-valuemin="1"
+     aria-valuemax="3"
+     aria-valuenow="1"
+     aria-labelledby="progressLabel">
+
+    <span id="progressLabel" class="sr-only">
+        Progression du formulaire
+    </span>
+
+    <div class="progress-bar" id="progressBar"></div>
+</div>
+
+<!-- ===== 3️⃣ FORMULAIRE MULTI-ÉTAPES ===== -->
+<form id="multiStepForm">
+
+    <!-- Étape 1 -->
+    <div class="step active" aria-current="step">
+        <h2 tabindex="-1">Étape 1 : Informations générales</h2>
+
+        <label for="nom">Nom</label>
+        <input id="nom" name="nom" required>
+
+        <label for="categorie">Catégorie</label>
+        <input id="categorie" name="categorie" required>
+    </div>
+
+    <!-- Étape 2 -->
+    <div class="step">
+        <h2 tabindex="-1">Étape 2 : Localisation</h2>
+
+        <label for="ville">Ville</label>
+        <input id="ville" name="ville" required>
+
+        <label for="telephone">Téléphone</label>
+        <input id="telephone" name="telephone" required>
+    </div>
+
+    <!-- Étape 3 -->
+    <div class="step">
+        <h2 tabindex="-1">Étape 3 : Évaluation</h2>
+
+        <label for="note">Note</label>
+        <input id="note" type="number" name="note" min="0" max="5" step="0.1" required>
+    </div>
+
+    <div class="buttons">
+        <button type="button" id="prevBtn">Précédent</button>
+        <button type="button" id="nextBtn">Suivant</button>
+    </div>
+
+</form>
+
+</main>
+
+<script>
+const steps = document.querySelectorAll(".step");
+const progressBar = document.getElementById("progressBar");
+const progressContainer = document.querySelector(".progress-container");
+const liveRegion = document.getElementById("liveRegion");
+const prevBtn = document.getElementById("prevBtn");
+const nextBtn = document.getElementById("nextBtn");
+const form = document.getElementById("multiStepForm");
+
+let currentStep = 0;
+const totalSteps = steps.length;
+
+/* ===== AFFICHAGE ÉTAPE ===== */
+function showStep(index) {
+
+    steps.forEach((step, i) => {
+        step.classList.toggle("active", i === index);
+        step.removeAttribute("aria-current");
+
+        if (i === index) {
+            step.setAttribute("aria-current", "step");
+        }
+    });
+
+    prevBtn.style.display = index === 0 ? "none" : "inline-block";
+    nextBtn.textContent = index === totalSteps - 1 ? "Valider" : "Suivant";
+
+    updateProgress();
+
+    // Focus accessible
+    const title = steps[index].querySelector("h2");
+    title.focus();
+
+    // Message lecteur d’écran
+    liveRegion.textContent = `Étape ${index + 1} sur ${totalSteps}`;
+}
+
+/* ===== BARRE DE PROGRESSION ===== */
+function updateProgress() {
+    const percent = ((currentStep + 1) / totalSteps) * 100;
+    progressBar.style.width = percent + "%";
+    progressContainer.setAttribute("aria-valuenow", currentStep + 1);
+}
+
+/* ===== SAUVEGARDE AUTOMATIQUE ===== */
+function saveData() {
+    const formData = new FormData(form);
+    const data = Object.fromEntries(formData.entries());
+    data.currentStep = currentStep;
+    localStorage.setItem("commerceForm", JSON.stringify(data));
+}
+
+/* ===== CHARGEMENT AUTO ===== */
+function loadData() {
+    const saved = localStorage.getItem("commerceForm");
+    if (saved) {
+        const data = JSON.parse(saved);
+
+        Object.keys(data).forEach(key => {
+            if (form.elements[key]) {
+                form.elements[key].value = data[key];
+            }
+        });
+
+        currentStep = data.currentStep || 0;
+    }
+}
+
+/* ===== NAVIGATION ===== */
+nextBtn.addEventListener("click", () => {
+    if (currentStep < totalSteps - 1) {
+        currentStep++;
+        showStep(currentStep);
+        saveData();
+    } else {
+        liveRegion.textContent = "Formulaire soumis avec succès";
+        alert("Formulaire soumis !");
+        localStorage.removeItem("commerceForm");
+        form.reset();
+        currentStep = 0;
+        showStep(currentStep);
+    }
+});
+
+prevBtn.addEventListener("click", () => {
+    if (currentStep > 0) {
+        currentStep--;
+        showStep(currentStep);
+        saveData();
+    }
+});
+
+/* Sauvegarde à chaque saisie */
+form.addEventListener("input", saveData);
+
+/* Init */
+loadData();
+showStep(currentStep);
+</script>
+
+</body>
+</html>
