@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ajouter un commerce - KaribConnect</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,opsz,wght@0,18..144,300..900;1,18..144,300..900&family=Pacifico&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        titre: ['Pacifico', 'cursive'],
+                        corps: ['Merriweather', 'serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { font-family: 'Merriweather', serif; }
+
+        form > section { display: none; }
+        form > section.active { display: block; }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50%       { transform: translateY(-10px); }
+        }
+        .float { animation: float 3s ease-in-out infinite; }
+
+        @keyframes fadein {
+            from { opacity: 0; transform: translateY(16px); }
+            to   { opacity: 1; transform: translateY(0); }
+        }
+        .fadein { animation: fadein 0.5s ease forwards; }
+
+        input[type="text"],
+        input[type="email"],
+        input[type="tel"],
+        input[type="url"],
+        input[type="time"],
+        input[type="file"],
+        select,
+        textarea {
+            border: 2px solid #e5e7eb;
+            border-radius: 0.75rem;
+            padding: 0.65rem 1rem;
+            width: 100%;
+            font-family: 'Merriweather', serif;
+            font-size: 0.875rem;
+            transition: border-color 0.2s;
+            outline: none;
+        }
+        input:focus, select:focus, textarea:focus {
+            border-color: #18ca86;
+        }
+
+        /* Barre de progression personnalisée */
+        .step-dot {
+            width: 2.2rem; height: 2.2rem;
+            border-radius: 9999px;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 0.75rem; font-weight: bold;
+            border: 2px solid #e5e7eb;
+            background: white;
+            color: #9ca3af;
+            transition: all 0.3s;
+        }
+        .step-dot.done    { background: #18ca86; border-color: #18ca86; color: white; }
+        .step-dot.active  { background: #0ea5e9; border-color: #0ea5e9; color: white; box-shadow: 0 0 0 4px rgba(14,165,233,0.2); }
+        .step-line        { flex: 1; height: 2px; background: #e5e7eb; transition: background 0.3s; }
+        .step-line.done   { background: #18ca86; }
+    </style>
+</head>
+<body class="bg-slate-50 text-gray-800">
+
+    <!-- ===== HEADER ===== -->
+    <header class="bg-white shadow-md sticky top-0 z-50">
+        <div class="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between">
+            <div class="flex items-center gap-2">
+                <span class="text-3xl float">🌴</span>
+                <h1 class="font-titre text-2xl" style="color:#18ca86;">KaribConnect</h1>
+            </div>
+            <nav>
+                <a href="index.html" class="flex items-center gap-2 text-sm font-semibold text-gray-600 hover:text-green-500 transition-colors">
+                    ← Retour à l'accueil
+                </a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- ===== HERO BANNER ===== -->
+    <div class="text-white py-12 px-4 text-center" style="background: linear-gradient(135deg, #0ea5e9 0%, #18ca86 50%, #f59e0b 100%);">
+        <h2 class="font-titre text-4xl drop-shadow mb-2">Ajouter votre commerce</h2>
+        <p class="opacity-90 text-base">Référencez votre établissement et rejoignez la communauté KaribConnect 🌺</p>
+    </div>
+
+    <main class="max-w-3xl mx-auto px-4 py-10">
+
+        <!-- ===== STEPPER ===== -->
+        <div class="flex items-center mb-10" id="stepper">
+            <div class="step-dot active" id="dot-0">1</div>
+            <div class="step-line" id="line-0"></div>
+            <div class="step-dot" id="dot-1">2</div>
+            <div class="step-line" id="line-1"></div>
+            <div class="step-dot" id="dot-2">3</div>
+            <div class="step-line" id="line-2"></div>
+            <div class="step-dot" id="dot-3">4</div>
+            <div class="step-line" id="line-3"></div>
+            <div class="step-dot" id="dot-4">5</div>
+            <div class="step-line" id="line-4"></div>
+            <div class="step-dot" id="dot-5">6</div>
+        </div>
+        <p class="text-center text-sm text-gray-500 -mt-6 mb-10">
+            Étape <span id="stepNumber" class="font-bold" style="color:#0ea5e9;">1</span> / 6
+        </p>
+
+        <form action="/api/commerces" method="POST" enctype="multipart/form-data">
+
+            <!-- ===== ÉTAPE 1 : Infos générales ===== -->
+            <section class="active fadein bg-white rounded-2xl shadow-md p-8 border-l-4" style="border-color:#18ca86;">
+                <h3 class="font-titre text-2xl mb-6" style="color:#18ca86;">1️⃣ Informations générales</h3>
+
+                <div class="mb-5">
+                    <label for="nom-commerce" class="block text-sm font-bold text-gray-700 mb-2">Nom du commerce * :</label>
+                    <input type="text" id="nom-commerce" name="nom" required minlength="3" maxlength="100"
+                           placeholder="Ex: La Savane Gourmande">
+                </div>
+
+                <div class="mb-5">
+                    <label for="categorie" class="block text-sm font-bold text-gray-700 mb-2">Catégorie * :</label>
+                    <select id="categorie" name="categorie" required>
+                        <option value="">Sélectionnez une catégorie</option>
+                        <option value="alimentation">🛒 Alimentation</option>
+                        <option value="restaurant">🍽️ Restaurant</option>
+                        <option value="vetements">👕 Vêtements</option>
+                        <option value="electronique">📱 Électronique</option>
+                        <option value="beaute">💇 Beauté & Bien-être</option>
+                        <option value="services">🔧 Services</option>
+                    </select>
+                </div>
+
+                <div class="mb-2">
+                    <label for="description" class="block text-sm font-bold text-gray-700 mb-2">Description * :</label>
+                    <textarea id="description" name="description" required minlength="50" maxlength="500" rows="5"
+                              placeholder="Décrivez votre commerce, vos produits et services..."></textarea>
+                    <small class="text-gray-400 text-xs mt-1 block">Minimum 50 caractères</small>
+                </div>
+            </section>
+
+            <!-- ===== ÉTAPE 2 : Coordonnées ===== -->
+            <section class="fadein bg-white rounded-2xl shadow-md p-8 border-l-4" style="border-color:#0ea5e9;">
+                <h3 class="font-titre text-2xl mb-6" style="color:#0ea5e9;">2️⃣ Coordonnées</h3>
+
+                <div class="mb-5">
+                    <label for="adresse" class="block text-sm font-bold text-gray-700 mb-2">Adresse * :</label>
+                    <input type="text" id="adresse" name="adresse" required placeholder="Numéro et nom de rue">
+                </div>
+
+                <div class="grid grid-cols-2 gap-4 mb-5">
+                    <div>
+                        <label for="code-postal" class="block text-sm font-bold text-gray-700 mb-2">Code postal * :</label>
+                        <input type="text" id="code-postal" name="code-postal" required pattern="972\d{2}" placeholder="97200">
+                    </div>
+                    <div>
+                        <label for="ville" class="block text-sm font-bold text-gray-700 mb-2">Ville * :</label>
+                        <input type="text" id="ville" name="ville" required placeholder="Fort-de-France">
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-2 gap-4 mb-5">
+                    <div>
+                        <label for="telephone" class="block text-sm font-bold text-gray-700 mb-2">Téléphone * :</label>
+                        <input type="tel" id="telephone" name="telephone" required pattern="0[5-7][0-9]{8}" placeholder="0596123456">
+                    </div>
+                    <div>
+                        <label for="email" class="block text-sm font-bold text-gray-700 mb-2">Email :</label>
+                        <input type="email" id="email" name="email" placeholder="contact@exemple.com">
+                    </div>
+                </div>
+
+                <div>
+                    <label for="site-web" class="block text-sm font-bold text-gray-700 mb-2">Site web :</label>
+                    <input type="url" id="site-web" name="site-web" placeholder="https://www.exemple.com">
+                </div>
+            </section>
+
+            <!-- ===== ÉTAPE 3 : Horaires ===== -->
+            <section class="fadein bg-white rounded-2xl shadow-md p-8 border-l-4" style="border-color:#f59e0b;">
+                <h3 class="font-titre text-2xl mb-6" style="color:#f59e0b;">3️⃣ Horaires d'ouverture</h3>
+
+                <fieldset class="space-y-3">
+                    <legend class="text-sm font-bold text-gray-700 mb-4">Jours d'ouverture :</legend>
+
+                    <!-- Template d'une ligne de jour -->
+                    <div class="flex items-center gap-4 bg-gray-50 rounded-xl px-4 py-3">
+                        <label class="flex items-center gap-2 w-32 cursor-pointer">
+                            <input type="checkbox" name="jours[]" value="lundi" checked class="w-4 h-4">
+                            <span class="text-sm font-medium">Lundi</span>
+                        </label>
+                        <input type="time" name="lundi-ouverture" value="08:00" class="w-auto flex-1" style="padding:0.4rem 0.6rem;">
+                        <span class="text-gray-400 text-sm">à</span>
+                        <input type="time" name="lundi-fermeture" value="18:00" class="w-auto flex-1" style="padding:0.4rem 0.6rem;">
+                    </div>
+                    <div class="flex items-center gap-4 bg-gray-50 rounded-xl px-4 py-3">
+                        <label class="flex items-center gap-2 w-32 cursor-pointer">
+                            <input type="checkbox" name="jours[]" value="mardi" checked class="w-4 h-4">
+                            <span class="text-sm font-medium">Mardi</span>
+                        </label>
+                        <input type="time" name="mardi-ouverture" value="08:00" class="w-auto flex-1" style="padding:0.4rem 0.6rem;">
+                        <span class="text-gray-400 text-sm">à</span>
+                        <input type="time" name="mardi-fermeture" value="18:00" class="w-auto flex-1" style="padding:0.4rem 0.6rem;">
+                    </div>
+                    <div class="flex items-center gap-4 bg-gray-50 rounded-xl px-4 py-3">
+                        <label class="flex items-center gap-2 w-32 cursor-pointer">
+                            <input type="checkbox" name="jours[]" value="mercredi" checked class="w-4 h-4">
+                            <span class="text-sm font-medium">Mercredi</span>
+                        </label>
+                        <input type="time" name="mercredi-ouverture" value="08:00" class="w-auto flex-1" style="padding:0.4rem 0.6rem;">
+                        <span class="text-gray-400 text-sm">à</span>
+                        <input type="time" name="mercredi-fermeture" value="18:00" class="w-auto flex-1" style="padding:0.4rem 0.6rem;">
+                    </div>
+                    <div class="flex items-center gap-4 bg-gray-50 rounded-xl px-4 py-3">
+                        <label class="flex items-center gap-2 w-32 cursor-pointer">
+                            <input type="checkbox" name="jours[]" value="jeudi" checked class="w-4 h-4">
+                            <span class="text-sm font-medium">Jeudi</span>
+                        </label>
+                        <input type="time" name="jeudi-ouverture" value="08:00" class="w-auto flex-1" style="padding:0.4rem 0.6rem;">
+                        <span class="text-gray-400 text-sm">à</span>
+                        <input type="time" name="jeudi-fermeture" value="18:00" class="w-auto flex-1" style="padding:0.4rem 0.6rem;">
+                    </div>
+                    <div class="flex items-center gap-4 bg-gray-50 rounded-xl px-4 py-3">
+                        <label class="flex items-center gap-2 w-32 cursor-pointer">
+                            <input type="checkbox" name="jours[]" value="vendredi" checked class="w-4 h-4">
+                            <span class="text-sm font-medium">Vendredi</span>
+                        </label>
+                        <input type="time" name="vendredi-ouverture" value="08:00" class="w-auto flex-1" style="padding:0.4rem 0.6rem;">
+                        <span class="text-gray-400 text-sm">à</span>
+                        <input type="time" name="vendredi-fermeture" value="18:00" class="w-auto flex-1" style="padding:0.4rem 0.6rem;">
+                    </div>
+                    <div class="flex items-center gap-4 bg-gray-50 rounded-xl px-4 py-3">
+                        <label class="flex items-center gap-2 w-32 cursor-pointer">
+                            <input type="checkbox" name="jours[]" value="samedi" class="w-4 h-4">
+                            <span class="text-sm font-medium">Samedi</span>
+                        </label>
+                        <input type="time" name="samedi-ouverture" class="w-auto flex-1" style="padding:0.4rem 0.6rem;">
+                        <span class="text-gray-400 text-sm">à</span>
+                        <input type="time" name="samedi-fermeture" class="w-auto flex-1" style="padding:0.4rem 0.6rem;">
+                    </div>
+                    <div class="flex items-center gap-4 bg-gray-50 rounded-xl px-4 py-3">
+                        <label class="flex items-center gap-2 w-32 cursor-pointer">
+                            <input type="checkbox" name="jours[]" value="dimanche" class="w-4 h-4">
+                            <span class="text-sm font-medium">Dimanche</span>
+                        </label>
+                        <input type="time" name="dimanche-ouverture" class="w-auto flex-1" style="padding:0.4rem 0.6rem;">
+                        <span class="text-gray-400 text-sm">à</span>
+                        <input type="time" name="dimanche-fermeture" class="w-auto flex-1" style="padding:0.4rem 0.6rem;">
+                    </div>
+                </fieldset>
+            </section>
+
+            <!-- ===== ÉTAPE 4 : Services ===== -->
+            <section class="fadein bg-white rounded-2xl shadow-md p-8 border-l-4" style="border-color:#f97316;">
+                <h3 class="font-titre text-2xl mb-6" style="color:#f97316;">4️⃣ Services proposés</h3>
+
+                <fieldset class="mb-6">
+                    <legend class="text-sm font-bold text-gray-700 mb-4">Sélectionnez tous les services disponibles :</legend>
+                    <div class="grid grid-cols-2 gap-3">
+                        <label class="flex items-center gap-3 bg-gray-50 rounded-xl px-4 py-3 cursor-pointer hover:bg-green-50 transition-colors">
+                            <input type="checkbox" name="services[]" value="livraison" class="w-4 h-4">
+                            <span class="text-sm">🚚 Livraison à domicile</span>
+                        </label>
+                        <label class="flex items-center gap-3 bg-gray-50 rounded-xl px-4 py-3 cursor-pointer hover:bg-green-50 transition-colors">
+                            <input type="checkbox" name="services[]" value="click-collect" class="w-4 h-4">
+                            <span class="text-sm">📦 Click & Collect</span>
+                        </label>
+                        <label class="flex items-center gap-3 bg-gray-50 rounded-xl px-4 py-3 cursor-pointer hover:bg-green-50 transition-colors">
+                            <input type="checkbox" name="services[]" value="parking" class="w-4 h-4">
+                            <span class="text-sm">🅿️ Parking disponible</span>
+                        </label>
+                        <label class="flex items-center gap-3 bg-gray-50 rounded-xl px-4 py-3 cursor-pointer hover:bg-green-50 transition-colors">
+                            <input type="checkbox" name="services[]" value="wifi" class="w-4 h-4">
+                            <span class="text-sm">📶 WiFi gratuit</span>
+                        </label>
+                        <label class="flex items-center gap-3 bg-gray-50 rounded-xl px-4 py-3 cursor-pointer hover:bg-green-50 transition-colors">
+                            <input type="checkbox" name="services[]" value="cb" class="w-4 h-4">
+                            <span class="text-sm">💳 Paiement CB</span>
+                        </label>
+                        <label class="flex items-center gap-3 bg-gray-50 rounded-xl px-4 py-3 cursor-pointer hover:bg-green-50 transition-colors">
+                            <input type="checkbox" name="services[]" value="accessible" class="w-4 h-4">
+                            <span class="text-sm">♿ Accessible PMR</span>
+                        </label>
+                    </div>
+                </fieldset>
+
+                <div>
+                    <label for="gamme-prix" class="block text-sm font-bold text-gray-700 mb-2">Gamme de prix :</label>
+                    <select id="gamme-prix" name="gamme-prix">
+                        <option value="economique">€ Économique</option>
+                        <option value="moyen" selected>€€ Moyen</option>
+                        <option value="premium">€€€ Premium</option>
+                    </select>
+                </div>
+            </section>
+
+            <!-- ===== ÉTAPE 5 : Photos ===== -->
+            <section class="fadein bg-white rounded-2xl shadow-md p-8 border-l-4" style="border-color:#0ea5e9;">
+                <h3 class="font-titre text-2xl mb-6" style="color:#0ea5e9;">5️⃣ Photos de votre commerce</h3>
+
+                <div class="mb-6">
+                    <label for="photo-principale" class="block text-sm font-bold text-gray-700 mb-2">Photo principale * :</label>
+                    <div class="border-2 border-dashed border-gray-300 rounded-xl p-6 text-center hover:border-green-400 transition-colors">
+                        <p class="text-3xl mb-2">📸</p>
+                        <input type="file" id="photo-principale" name="photo-principale"
+                               accept="image/jpeg,image/png,image/webp" required
+                               class="mx-auto block">
+                        <small class="text-gray-400 text-xs mt-2 block">Formats acceptés : JPG, PNG, WebP (max 5 Mo)</small>
+                    </div>
+                </div>
+
+                <div>
+                    <label for="photos-galerie" class="block text-sm font-bold text-gray-700 mb-2">Galerie photos (optionnel) :</label>
+                    <div class="border-2 border-dashed border-gray-300 rounded-xl p-6 text-center hover:border-blue-400 transition-colors">
+                        <p class="text-3xl mb-2">🖼️</p>
+                        <input type="file" id="photos-galerie" name="photos-galerie"
+                               accept="image/jpeg,image/png,image/webp" multiple
+                               class="mx-auto block">
+                        <small class="text-gray-400 text-xs mt-2 block">Ajoutez jusqu'à 10 photos supplémentaires</small>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ===== ÉTAPE 6 : Conditions ===== -->
+            <section class="fadein bg-white rounded-2xl shadow-md p-8 border-l-4" style="border-color:#18ca86;">
+                <h3 class="font-titre text-2xl mb-6" style="color:#18ca86;">6️⃣ Finalisation</h3>
+
+                <div class="bg-green-50 rounded-xl p-5 mb-6 text-center">
+                    <p class="text-4xl mb-2">🎉</p>
+                    <p class="font-bold text-gray-700">Vous y êtes presque !</p>
+                    <p class="text-sm text-gray-500 mt-1">Acceptez les conditions pour publier votre commerce</p>
+                </div>
+
+                <div class="space-y-4">
+                    <label class="flex items-start gap-3 bg-gray-50 rounded-xl px-4 py-3 cursor-pointer hover:bg-green-50 transition-colors">
+                        <input type="checkbox" name="cgv" required class="w-4 h-4 mt-0.5">
+                        <span class="text-sm">J'accepte les <a href="cgv.html" target="_blank" class="font-bold underline" style="color:#0ea5e9;">conditions générales d'utilisation</a> *</span>
+                    </label>
+                    <label class="flex items-start gap-3 bg-gray-50 rounded-xl px-4 py-3 cursor-pointer hover:bg-green-50 transition-colors">
+                        <input type="checkbox" name="newsletter" class="w-4 h-4 mt-0.5">
+                        <span class="text-sm">Je souhaite recevoir les actualités de KaribConnect</span>
+                    </label>
+                </div>
+
+                <div class="flex gap-4 mt-8">
+                    <button type="submit"
+                            class="flex-1 text-white font-bold py-4 rounded-full text-lg shadow-lg hover:opacity-90 hover:scale-105 transition-all duration-300"
+                            style="background:#18ca86;">
+                        ✅ Publier mon commerce
+                    </button>
+                    <button type="reset"
+                            class="px-6 border-2 border-gray-300 text-gray-600 font-bold py-4 rounded-full hover:bg-gray-50 transition-all duration-300">
+                        ↺ Réinitialiser
+                    </button>
+                </div>
+
+                <p class="text-xs text-gray-400 mt-4 text-center">
+                    * Champs obligatoires — Votre commerce sera vérifié avant publication (délai 24-48h)
+                </p>
+            </section>
+
+        </form>
+    </main>
+
+    <footer class="bg-gray-800 text-white py-6 px-4 text-center mt-10">
+        <div class="flex items-center justify-center gap-2 mb-1">
+            <span>🌴</span>
+            <span class="font-titre" style="color:#18ca86;">KaribConnect</span>
+        </div>
+        <small class="text-gray-500 text-xs">&copy; 2026 KaribConnect — L1 Informatique UA</small>
+    </footer>
+
+    <script>
+        const sections = document.querySelectorAll("form > section");
+        const stepNumber = document.getElementById("stepNumber");
+        let currentStep = 0;
+
+        sections[0].classList.add("active");
+        updateStepper();
+
+        // Génération des boutons Précédent / Suivant dans chaque section
+        sections.forEach((section, index) => {
+            const nav = document.createElement("div");
+            nav.className = "flex gap-4 mt-8";
+
+            if (index > 0) {
+                const prevBtn = document.createElement("button");
+                prevBtn.type = "button";
+                prevBtn.innerHTML = "← Précédent";
+                prevBtn.className = "px-6 py-3 border-2 border-gray-300 text-gray-600 font-bold rounded-full hover:bg-gray-50 transition-all";
+                prevBtn.onclick = () => changeStep(index - 1);
+                nav.appendChild(prevBtn);
+            }
+
+            if (index < sections.length - 1) {
+                const nextBtn = document.createElement("button");
+                nextBtn.type = "button";
+                nextBtn.innerHTML = "Suivant →";
+                nextBtn.className = "flex-1 text-white font-bold py-3 rounded-full shadow hover:opacity-90 hover:scale-105 transition-all";
+                nextBtn.style.background = "#0ea5e9";
+                nextBtn.onclick = () => changeStep(index + 1);
+                nav.appendChild(nextBtn);
+            }
+
+            section.appendChild(nav);
+        });
+
+        function changeStep(step) {
+            saveData();
+            sections[currentStep].classList.remove("active");
+            currentStep = step;
+            sections[currentStep].classList.add("active");
+            sections[currentStep].classList.add("fadein");
+            updateStepper();
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function updateStepper() {
+            stepNumber.textContent = currentStep + 1;
+            for (let i = 0; i < sections.length; i++) {
+                const dot  = document.getElementById("dot-" + i);
+                const line = document.getElementById("line-" + i);
+                dot.classList.remove("active", "done");
+                if (line) line.classList.remove("done");
+
+                if (i < currentStep) {
+                    dot.classList.add("done");
+                    dot.textContent = "✓";
+                    if (line) line.classList.add("done");
+                } else if (i === currentStep) {
+                    dot.classList.add("active");
+                    dot.textContent = i + 1;
+                } else {
+                    dot.textContent = i + 1;
+                }
+            }
+        }
+
+        function saveData() {
+            const data = {};
+            document.querySelectorAll("input, select, textarea").forEach(el => {
+                if (el.type === "checkbox") {
+                    data[el.name + el.value] = el.checked;
+                } else if (el.type !== "file") {
+                    data[el.name] = el.value;
+                }
+            });
+            localStorage.setItem("karibconnect-form", JSON.stringify(data));
+        }
+
+        function loadData() {
+            const saved = JSON.parse(localStorage.getItem("karibconnect-form"));
+            if (!saved) return;
+            document.querySelectorAll("input, select, textarea").forEach(el => {
+                if (el.type === "checkbox") {
+                    el.checked = saved[el.name + el.value] || false;
+                } else if (saved[el.name] && el.type !== "file") {
+                    el.value = saved[el.name];
+                }
+            });
+        }
+
+        document.addEventListener("DOMContentLoaded", loadData);
+    </script>
+
+</body>
+</html>

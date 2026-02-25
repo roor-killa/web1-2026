@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,opsz,wght@0,18..144,300..900;1,18..144,300..900&family=Pacifico&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Annuaire des commerces locaux de Martinique">
+    <title>KaribConnect - Découvrez les commerces martiniquais</title>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        vert:   '#18ca86',
+                        ocean:  '#0ea5e9',
+                        soleil: '#f59e0b',
+                        corail: '#f97316',
+                        sable:  '#fef3c7',
+                    },
+                    fontFamily: {
+                        titre: ['Pacifico', 'cursive'],
+                        corps: ['Merriweather', 'serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { font-family: 'Merriweather', serif; }
+
+        .hero-bg {
+            background: linear-gradient(135deg, #0ea5e9 0%, #18ca86 50%, #f59e0b 100%);
+        }
+        .wave::after {
+            content: '';
+            display: block;
+            height: 60px;
+            background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 60'%3E%3Cpath fill='%23f8fafc' d='M0,30 C360,60 1080,0 1440,30 L1440,60 L0,60 Z'/%3E%3C/svg%3E") no-repeat center bottom;
+            background-size: cover;
+        }
+        .card-hover { transition: transform 0.3s ease, box-shadow 0.3s ease; }
+        .card-hover:hover { transform: translateY(-6px); box-shadow: 0 20px 40px rgba(0,0,0,0.15); }
+
+        .categorie-item { transition: transform 0.2s ease; }
+        .categorie-item:hover { transform: scale(1.08); }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50%       { transform: translateY(-10px); }
+        }
+        .float { animation: float 3s ease-in-out infinite; }
+
+        @keyframes fadein {
+            from { opacity: 0; transform: translateY(20px); }
+            to   { opacity: 1; transform: translateY(0); }
+        }
+        .fadein            { animation: fadein 0.8s ease forwards; }
+        .fadein-delay-1    { animation-delay: 0.2s; opacity: 0; }
+        .fadein-delay-2    { animation-delay: 0.4s; opacity: 0; }
+        .fadein-delay-3    { animation-delay: 0.6s; opacity: 0; }
+    </style>
+</head>
+<body class="bg-slate-50 text-gray-800">
+
+    <!-- ===== HEADER ===== -->
+    <header class="bg-white shadow-md sticky top-0 z-50">
+        <div class="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between">
+            <div class="flex items-center gap-2">
+                <span class="text-3xl float">🌴</span>
+                <h1 class="font-titre text-2xl" style="color:#18ca86;">KaribConnect</h1>
+            </div>
+            <nav aria-label="Navigation principale">
+                <ul class="flex gap-6 text-sm font-semibold">
+                    <li><a href="index.html" class="text-gray-700 hover:text-green-500 transition-colors">Accueil</a></li>
+                    <li><a href="commerces_liste.html" class="text-gray-700 hover:text-green-500 transition-colors">Commerces</a></li>
+                    <li><a href="ajouter_commerce.html" class="bg-green-400 text-white px-4 py-2 rounded-full hover:bg-green-500 transition-colors">+ Ajouter</a></li>
+                    <li><a href="#contact" class="text-gray-700 hover:text-green-500 transition-colors">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- ===== HERO ===== -->
+    <section class="hero-bg wave text-white py-24 px-4 text-center" aria-labelledby="titre-hero">
+        <div class="max-w-3xl mx-auto">
+            <p class="text-5xl mb-4 fadein">🌴🌊☀️</p>
+            <h2 id="titre-hero" class="font-titre text-5xl md:text-6xl mb-6 fadein fadein-delay-1 drop-shadow-lg">
+                Découvrez la Martinique autrement
+            </h2>
+            <p class="text-lg md:text-xl mb-10 opacity-90 fadein fadein-delay-2">
+                Plus de <strong>200 commerces locaux</strong> à votre portée de clic.<br>
+                Trouvez, explorez et soutenez les entreprises de votre île !
+            </p>
+            <a href="#recherche" class="fadein fadein-delay-3 inline-block bg-white font-bold px-8 py-4 rounded-full text-lg shadow-lg hover:bg-yellow-50 hover:scale-105 transition-all duration-300"
+               style="color:#18ca86;">
+                🔍 Commencer la recherche
+            </a>
+        </div>
+    </section>
+
+    <main id="contenu-principal" class="max-w-6xl mx-auto px-4">
+
+        <!-- ===== COMMERCES VEDETTES ===== -->
+        <section id="commerces-vedettes" aria-labelledby="titre-vedettes" class="py-16">
+            <h2 id="titre-vedettes" class="font-titre text-3xl text-center mb-2" style="color:#0ea5e9;">
+                🌟 Commerces à la une
+            </h2>
+            <p class="text-center text-gray-500 mb-10">Les meilleurs établissements sélectionnés pour vous</p>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+
+                <article class="card-hover bg-white rounded-2xl overflow-hidden shadow-md border-t-4"
+                         style="border-color:#18ca86;"
+                         itemscope itemtype="http://schema.org/LocalBusiness">
+                    <div class="bg-gradient-to-r from-green-50 to-cyan-50 px-6 py-5">
+                        <div class="flex items-center justify-between">
+                            <h3 class="text-xl font-bold text-gray-800" itemprop="name">La Savane Gourmande</h3>
+                            <span class="text-2xl">🍽️</span>
+                        </div>
+                        <span class="inline-block mt-2 text-white text-xs px-3 py-1 rounded-full" style="background:#18ca86;" itemprop="category">
+                            Restaurant créole
+                        </span>
+                    </div>
+                    <div class="px-6 py-4">
+                        <p class="text-gray-500 text-sm" itemprop="address" itemscope itemtype="http://schema.org/PostalAddress">
+                            📍 Fort-de-France, Martinique
+                        </p>
+                        <div class="flex items-center gap-1 mt-2 text-yellow-400">
+                            ⭐⭐⭐⭐⭐ <span class="text-gray-500 text-sm ml-1">(48 avis)</span>
+                        </div>
+                    </div>
+                    <div class="px-6 pb-5 flex gap-3">
+                        <a href="commerce_details.html" class="flex-1 text-center text-white py-2 rounded-full text-sm font-semibold hover:opacity-80 transition-opacity" style="background:#0ea5e9;">
+                            Voir les détails
+                        </a>
+                        <button class="px-4 py-2 border-2 font-semibold rounded-full text-sm hover:text-white transition-colors"
+                                style="border-color:#f59e0b; color:#f59e0b;"
+                                onmouseover="this.style.background='#f59e0b';this.style.color='white'"
+                                onmouseout="this.style.background='transparent';this.style.color='#f59e0b'"
+                                aria-label="Ajouter aux favoris">
+                            ⭐ Favoris
+                        </button>
+                    </div>
+                </article>
+
+                <article class="card-hover bg-white rounded-2xl overflow-hidden shadow-md border-t-4"
+                         style="border-color:#f59e0b;"
+                         itemscope itemtype="http://schema.org/LocalBusiness">
+                    <div class="bg-gradient-to-r from-yellow-50 to-orange-50 px-6 py-5">
+                        <div class="flex items-center justify-between">
+                            <h3 class="text-xl font-bold text-gray-800" itemprop="name">Voir tous les commerces</h3>
+                            <span class="text-2xl">🗺️</span>
+                        </div>
+                        <span class="inline-block mt-2 text-white text-xs px-3 py-1 rounded-full" style="background:#f59e0b;">
+                            +200 établissements
+                        </span>
+                    </div>
+                    <div class="px-6 py-4">
+                        <p class="text-gray-500 text-sm" itemprop="address" itemscope itemtype="http://schema.org/PostalAddress">
+                            📍 Partout en Martinique
+                        </p>
+                        <p class="text-gray-600 text-sm mt-2">Explorez l'ensemble de nos commerces partenaires.</p>
+                    </div>
+                    <div class="px-6 pb-5">
+                        <a href="commerces_liste.html" class="block text-center text-white py-2 rounded-full text-sm font-semibold hover:opacity-80 transition-opacity" style="background:#f59e0b;">
+                            Voir la liste complète →
+                        </a>
+                    </div>
+                </article>
+
+            </div>
+        </section>
+
+        <!-- ===== CATEGORIES ===== -->
+        <section id="categories" aria-labelledby="titre-categories" class="py-16 border-t-2 border-dashed border-gray-200">
+            <h2 id="titre-categories" class="font-titre text-3xl text-center mb-2" style="color:#f59e0b;">
+                🗂️ Explorer par catégorie
+            </h2>
+            <p class="text-center text-gray-500 mb-10">Trouvez exactement ce dont vous avez besoin</p>
+
+            <nav aria-label="Catégories de commerces">
+                <ul class="grid grid-cols-2 sm:grid-cols-4 gap-4">
+
+                    <li class="categorie-item">
+                        <a href="#restaurants" class="flex flex-col items-center bg-white rounded-2xl p-5 shadow hover:shadow-lg text-center border-b-4" style="border-color:#18ca86;">
+                            <span class="text-4xl mb-2" aria-hidden="true">🍽️</span>
+                            <strong class="text-sm font-bold text-gray-800">Restaurants</strong>
+                            <data value="42" class="text-xs text-gray-400 mt-1">42 établissements</data>
+                        </a>
+                    </li>
+                    <li class="categorie-item">
+                        <a href="#alimentaires" class="flex flex-col items-center bg-white rounded-2xl p-5 shadow hover:shadow-lg text-center border-b-4" style="border-color:#0ea5e9;">
+                            <span class="text-4xl mb-2" aria-hidden="true">🛒</span>
+                            <strong class="text-sm font-bold text-gray-800">Alimentaires</strong>
+                            <data value="12" class="text-xs text-gray-400 mt-1">12 établissements</data>
+                        </a>
+                    </li>
+                    <li class="categorie-item">
+                        <a href="#services" class="flex flex-col items-center bg-white rounded-2xl p-5 shadow hover:shadow-lg text-center border-b-4" style="border-color:#f97316;">
+                            <span class="text-4xl mb-2" aria-hidden="true">🔧</span>
+                            <strong class="text-sm font-bold text-gray-800">Services</strong>
+                            <data value="8" class="text-xs text-gray-400 mt-1">8 établissements</data>
+                        </a>
+                    </li>
+                    <li class="categorie-item">
+                        <a href="#sante" class="flex flex-col items-center bg-white rounded-2xl p-5 shadow hover:shadow-lg text-center border-b-4" style="border-color:#18ca86;">
+                            <span class="text-4xl mb-2" aria-hidden="true">⚕️</span>
+                            <strong class="text-sm font-bold text-gray-800">Santé</strong>
+                            <data value="5" class="text-xs text-gray-400 mt-1">5 établissements</data>
+                        </a>
+                    </li>
+                    <li class="categorie-item">
+                        <a href="#beaute" class="flex flex-col items-center bg-white rounded-2xl p-5 shadow hover:shadow-lg text-center border-b-4" style="border-color:#f59e0b;">
+                            <span class="text-4xl mb-2" aria-hidden="true">💇</span>
+                            <strong class="text-sm font-bold text-gray-800">Beauté</strong>
+                            <data value="10" class="text-xs text-gray-400 mt-1">10 établissements</data>
+                        </a>
+                    </li>
+                    <li class="categorie-item">
+                        <a href="#loisirs" class="flex flex-col items-center bg-white rounded-2xl p-5 shadow hover:shadow-lg text-center border-b-4" style="border-color:#0ea5e9;">
+                            <span class="text-4xl mb-2" aria-hidden="true">🎮</span>
+                            <strong class="text-sm font-bold text-gray-800">Loisirs</strong>
+                            <data value="7" class="text-xs text-gray-400 mt-1">7 établissements</data>
+                        </a>
+                    </li>
+                    <li class="categorie-item">
+                        <a href="#vetements" class="flex flex-col items-center bg-white rounded-2xl p-5 shadow hover:shadow-lg text-center border-b-4" style="border-color:#f97316;">
+                            <span class="text-4xl mb-2" aria-hidden="true">👕</span>
+                            <strong class="text-sm font-bold text-gray-800">Vêtements</strong>
+                            <data value="15" class="text-xs text-gray-400 mt-1">15 établissements</data>
+                        </a>
+                    </li>
+                    <li class="categorie-item">
+                        <a href="#electronique" class="flex flex-col items-center bg-white rounded-2xl p-5 shadow hover:shadow-lg text-center border-b-4" style="border-color:#18ca86;">
+                            <span class="text-4xl mb-2" aria-hidden="true">📱</span>
+                            <strong class="text-sm font-bold text-gray-800">Électronique</strong>
+                            <data value="9" class="text-xs text-gray-400 mt-1">9 établissements</data>
+                        </a>
+                    </li>
+
+                </ul>
+            </nav>
+        </section>
+
+    </main>
+
+    <!-- ===== RECHERCHE ===== -->
+    <section id="recherche" aria-labelledby="titre-recherche" class="py-16 px-4 border-t-2 border-dashed border-gray-200"
+             style="background: linear-gradient(135deg, #f0fdf4 0%, #e0f7fa 100%);">
+        <div class="max-w-3xl mx-auto">
+            <h2 id="titre-recherche" class="font-titre text-3xl text-center mb-2" style="color:#18ca86;">
+                🔍 Trouvez votre commerce
+            </h2>
+            <p class="text-center text-gray-500 mb-10">Recherchez parmi nos 200+ commerces martiniquais</p>
+
+            <form class="search-form space-y-6" action="/search" method="GET" role="search">
+
+                <fieldset class="bg-white rounded-2xl shadow p-6 border-l-4" style="border-color:#18ca86;">
+                    <legend class="font-titre text-lg px-2" style="color:#18ca86;">🌿 Que recherchez-vous ?</legend>
+                    <div class="mt-4">
+                        <label for="query" class="block text-sm font-bold text-gray-700 mb-2">Nom, produit ou service :</label>
+                        <input type="search" id="query" name="q"
+                               placeholder="Ex: Coiffeur, Restaurant créole..."
+                               autocomplete="off" aria-describedby="query-help"
+                               class="w-full border-2 border-gray-200 rounded-xl px-4 py-3 focus:outline-none transition-colors"
+                               style="focus-border-color:#18ca86;">
+                        <small id="query-help" class="text-gray-400 text-xs mt-1 block">
+                            Saisissez au moins 3 caractères pour lancer la recherche
+                        </small>
+                    </div>
+                </fieldset>
+
+                <fieldset class="bg-white rounded-2xl shadow p-6 border-l-4" style="border-color:#0ea5e9;">
+                    <legend class="font-titre text-lg px-2" style="color:#0ea5e9;">🌊 Où ?</legend>
+                    <div class="mt-4 space-y-4">
+                        <div>
+                            <label for="ville" class="block text-sm font-bold text-gray-700 mb-2">Ville :</label>
+                            <select id="ville" name="ville" required
+                                    class="w-full border-2 border-gray-200 rounded-xl px-4 py-3 focus:outline-none transition-colors">
+                                <option value="">Sélectionnez une ville</option>
+                                <optgroup label="Centre">
+                                    <option value="fort-de-france">Fort-de-France</option>
+                                    <option value="lamentin">Lamentin</option>
+                                    <option value="schoelcher">Schoelcher</option>
+                                </optgroup>
+                                <optgroup label="Sud">
+                                    <option value="ducos">Ducos</option>
+                                    <option value="riviere-salee">Rivière-Salée</option>
+                                    <option value="trois-ilets">Trois-Îlets</option>
+                                </optgroup>
+                                <optgroup label="Nord">
+                                    <option value="trinite">Trinité</option>
+                                    <option value="robert">Robert</option>
+                                </optgroup>
+                            </select>
+                        </div>
+                        <div>
+                            <label for="rayon" class="block text-sm font-bold text-gray-700 mb-2">Rayon de recherche :</label>
+                            <input type="range" id="rayon" name="rayon"
+                                   min="1" max="20" value="5" step="1"
+                                   oninput="rayonValue.textContent = this.value"
+                                   class="w-full">
+                            <div class="flex justify-between text-xs text-gray-400 mt-1">
+                                <span>1 km</span>
+                                <span class="font-bold" style="color:#0ea5e9;"><output id="rayonValue">5</output> km</span>
+                                <span>20 km</span>
+                            </div>
+                        </div>
+                    </div>
+                </fieldset>
+
+                <fieldset class="bg-white rounded-2xl shadow p-6 border-l-4" style="border-color:#f59e0b;">
+                    <legend class="font-titre text-lg px-2" style="color:#f59e0b;">☀️ Précisez votre recherche</legend>
+                    <div class="mt-4 space-y-5">
+
+                        <div>
+                            <label for="categorie" class="block text-sm font-bold text-gray-700 mb-2">Catégorie :</label>
+                            <select id="categorie" name="categorie"
+                                    class="w-full border-2 border-gray-200 rounded-xl px-4 py-3 focus:outline-none transition-colors">
+                                <option value="">Toutes catégories</option>
+                                <option value="alimentation">🛒 Alimentation</option>
+                                <option value="restaurant">🍽️ Restaurants</option>
+                                <option value="vetements">👕 Vêtements</option>
+                                <option value="electronique">📱 Électronique</option>
+                                <option value="beaute">💇 Beauté & Bien-être</option>
+                                <option value="services">🔧 Services</option>
+                                <option value="sante">⚕️ Santé</option>
+                                <option value="loisirs">🎮 Loisirs</option>
+                            </select>
+                        </div>
+
+                        <div>
+                            <p class="text-sm font-bold text-gray-700 mb-2">Gamme de prix :</p>
+                            <div class="flex gap-4 flex-wrap">
+                                <label class="flex items-center gap-2 cursor-pointer">
+                                    <input type="checkbox" name="prix[]" value="economique" class="w-4 h-4">
+                                    <span class="text-sm">€ Économique</span>
+                                </label>
+                                <label class="flex items-center gap-2 cursor-pointer">
+                                    <input type="checkbox" name="prix[]" value="moyen" class="w-4 h-4">
+                                    <span class="text-sm">€€ Moyen</span>
+                                </label>
+                                <label class="flex items-center gap-2 cursor-pointer">
+                                    <input type="checkbox" name="prix[]" value="premium" class="w-4 h-4">
+                                    <span class="text-sm">€€€ Premium</span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <div>
+                            <p class="text-sm font-bold text-gray-700 mb-2">Services :</p>
+                            <div class="grid grid-cols-2 gap-2">
+                                <label class="flex items-center gap-2 cursor-pointer">
+                                    <input type="checkbox" name="services[]" value="livraison" class="w-4 h-4">
+                                    <span class="text-sm">🚚 Livraison</span>
+                                </label>
+                                <label class="flex items-center gap-2 cursor-pointer">
+                                    <input type="checkbox" name="services[]" value="parking" class="w-4 h-4">
+                                    <span class="text-sm">🅿️ Parking</span>
+                                </label>
+                                <label class="flex items-center gap-2 cursor-pointer">
+                                    <input type="checkbox" name="services[]" value="wifi" class="w-4 h-4">
+                                    <span class="text-sm">📶 WiFi gratuit</span>
+                                </label>
+                                <label class="flex items-center gap-2 cursor-pointer">
+                                    <input type="checkbox" name="services[]" value="accessible" class="w-4 h-4">
+                                    <span class="text-sm">♿ Accessible PMR</span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <div>
+                            <p class="text-sm font-bold text-gray-700 mb-2">Ouvert maintenant :</p>
+                            <div class="flex gap-4 flex-wrap">
+                                <label class="flex items-center gap-2 cursor-pointer">
+                                    <input type="radio" name="ouverture" value="all" checked class="w-4 h-4">
+                                    <span class="text-sm">Peu importe</span>
+                                </label>
+                                <label class="flex items-center gap-2 cursor-pointer">
+                                    <input type="radio" name="ouverture" value="now" class="w-4 h-4">
+                                    <span class="text-sm">Actuellement ouvert</span>
+                                </label>
+                                <label class="flex items-center gap-2 cursor-pointer">
+                                    <input type="radio" name="ouverture" value="today" class="w-4 h-4">
+                                    <span class="text-sm">Ouvert aujourd'hui</span>
+                                </label>
+                            </div>
+                        </div>
+
+                    </div>
+                </fieldset>
+
+                <div class="flex gap-4">
+                    <button type="submit"
+                            class="flex-1 text-white font-bold py-4 rounded-full text-lg shadow-lg hover:opacity-90 hover:scale-105 transition-all duration-300"
+                            style="background:#18ca86;">
+                        🔍 Rechercher
+                    </button>
+                    <button type="reset"
+                            class="px-8 border-2 border-gray-300 text-gray-600 font-bold py-4 rounded-full hover:bg-gray-50 transition-all duration-300">
+                        ↺ Réinitialiser
+                    </button>
+                </div>
+
+            </form>
+        </div>
+    </section>
+
+    <!-- ===== FOOTER ===== -->
+    <footer class="bg-gray-800 text-white py-12 px-4">
+        <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8 text-center md:text-left">
+
+            <div>
+                <div class="flex items-center gap-2 justify-center md:justify-start mb-3">
+                    <span class="text-2xl">🌴</span>
+                    <span class="font-titre text-xl" style="color:#18ca86;">KaribConnect</span>
+                </div>
+                <p class="text-gray-400 text-sm">
+                    Projet étudiant de l'Université des Antilles pour promouvoir les commerces locaux de Martinique.
+                </p>
+            </div>
+
+            <div>
+                <h3 class="font-bold mb-3" style="color:#f59e0b;">Navigation</h3>
+                <ul class="space-y-2 text-sm text-gray-400">
+                    <li><a href="index.html" class="hover:text-white transition-colors">Accueil</a></li>
+                    <li><a href="commerces_liste.html" class="hover:text-white transition-colors">Commerces</a></li>
+                    <li><a href="ajouter_commerce.html" class="hover:text-white transition-colors">Ajouter un commerce</a></li>
+                </ul>
+            </div>
+
+            <section id="contact">
+                <h3 class="font-bold mb-3" style="color:#0ea5e9;">Contactez-nous</h3>
+                <address class="not-italic text-sm text-gray-400 space-y-2">
+                    <p>📧 <a href="mailto:contact@karibconnect.fr" class="hover:text-white transition-colors">contact@karibconnect.fr</a></p>
+                    <p>📞 <a href="tel:+596596000000" class="hover:text-white transition-colors">0596 11 22 33</a></p>
+                </address>
+            </section>
+
+        </div>
+        <div class="max-w-6xl mx-auto mt-8 pt-6 border-t border-gray-700 text-center">
+            <small class="text-gray-500 text-xs">&copy; 2026 KaribConnect — L1 Informatique UA 🌴</small>
+        </div>
+    </footer>
+
+</body>
+</html>

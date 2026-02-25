@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Liste des commerces - KaribConnect</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,opsz,wght@0,18..144,300..900;1,18..144,300..900&family=Pacifico&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        titre: ['Pacifico', 'cursive'],
+                        corps: ['Merriweather', 'serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { font-family: 'Merriweather', serif; }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50%       { transform: translateY(-10px); }
+        }
+        .float { animation: float 3s ease-in-out infinite; }
+
+        @keyframes fadein {
+            from { opacity: 0; transform: translateY(16px); }
+            to   { opacity: 1; transform: translateY(0); }
+        }
+        .fadein { animation: fadein 0.5s ease forwards; }
+
+        .commerce-row {
+            transition: background 0.2s, transform 0.2s;
+        }
+        .commerce-row:hover {
+            background: #f0fdf4;
+            transform: scale(1.01);
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 0.2rem 0.75rem;
+            border-radius: 9999px;
+            font-size: 0.75rem;
+            font-weight: 600;
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-gray-800">
+
+    <!-- ===== HEADER ===== -->
+    <header class="bg-white shadow-md sticky top-0 z-50">
+        <div class="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between">
+            <div class="flex items-center gap-2">
+                <span class="text-3xl float">🌴</span>
+                <h1 class="font-titre text-2xl" style="color:#18ca86;">KaribConnect</h1>
+            </div>
+            <nav>
+                <a href="index.html" class="text-sm font-semibold text-gray-600 hover:text-green-500 transition-colors">
+                    ← Retour à l'accueil
+                </a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- ===== HERO BANNER ===== -->
+    <div class="text-white py-12 px-4 text-center" style="background: linear-gradient(135deg, #0ea5e9 0%, #18ca86 50%, #f59e0b 100%);">
+        <h2 class="font-titre text-4xl drop-shadow mb-2">Liste des commerces</h2>
+        <p class="opacity-90 text-base">Explorez tous les établissements référencés en Martinique 🌺</p>
+    </div>
+
+    <main class="max-w-6xl mx-auto px-4 py-10 fadein">
+
+        <!-- ===== STATS ===== -->
+        <div class="grid grid-cols-3 gap-4 mb-10">
+            <div class="bg-white rounded-2xl shadow p-5 text-center border-t-4" style="border-color:#18ca86;">
+                <p class="text-3xl font-bold" style="color:#18ca86;">3</p>
+                <p class="text-xs text-gray-500 mt-1">Commerces</p>
+            </div>
+            <div class="bg-white rounded-2xl shadow p-5 text-center border-t-4" style="border-color:#0ea5e9;">
+                <p class="text-3xl font-bold" style="color:#0ea5e9;">3</p>
+                <p class="text-xs text-gray-500 mt-1">Villes</p>
+            </div>
+            <div class="bg-white rounded-2xl shadow p-5 text-center border-t-4" style="border-color:#f59e0b;">
+                <p class="text-3xl font-bold" style="color:#f59e0b;">4.5</p>
+                <p class="text-xs text-gray-500 mt-1">Note moyenne ⭐</p>
+            </div>
+        </div>
+
+        <!-- ===== TABLEAU ===== -->
+        <div class="bg-white rounded-2xl shadow-md overflow-hidden">
+
+            <!-- En-tête du tableau -->
+            <div class="px-6 py-4 border-b border-gray-100 flex items-center justify-between">
+                <h3 class="font-titre text-xl" style="color:#0ea5e9;">📋 Commerces référencés</h3>
+                <a href="ajouter_commerce.html"
+                   class="text-sm text-white font-bold px-4 py-2 rounded-full hover:opacity-90 transition-opacity"
+                   style="background:#18ca86;">
+                    + Ajouter le vôtre
+                </a>
+            </div>
+
+            <table class="w-full text-sm">
+                <caption class="sr-only">Commerces référencés sur KaribConnect</caption>
+
+                <thead>
+                    <tr style="background: linear-gradient(90deg, #f0fdf4, #e0f7fa);">
+                        <th scope="col" class="text-left px-6 py-4 text-xs font-bold text-gray-500 uppercase tracking-wider">Nom</th>
+                        <th scope="col" class="text-left px-6 py-4 text-xs font-bold text-gray-500 uppercase tracking-wider">Catégorie</th>
+                        <th scope="col" class="text-left px-6 py-4 text-xs font-bold text-gray-500 uppercase tracking-wider">Ville</th>
+                        <th scope="col" class="text-left px-6 py-4 text-xs font-bold text-gray-500 uppercase tracking-wider">Téléphone</th>
+                        <th scope="col" class="text-left px-6 py-4 text-xs font-bold text-gray-500 uppercase tracking-wider">Note</th>
+                        <th scope="col" class="text-left px-6 py-4 text-xs font-bold text-gray-500 uppercase tracking-wider">Action</th>
+                    </tr>
+                </thead>
+
+                <tbody class="divide-y divide-gray-100">
+
+                    <tr class="commerce-row">
+                        <td class="px-6 py-4">
+                            <div class="flex items-center gap-3">
+                                <span class="text-2xl">🍽️</span>
+                                <span class="font-bold text-gray-800">La Savane Gourmande</span>
+                            </div>
+                        </td>
+                        <td class="px-6 py-4">
+                            <span class="badge text-white" style="background:#18ca86;">Restaurant</span>
+                        </td>
+                        <td class="px-6 py-4 text-gray-600">📍 Fort-de-France</td>
+                        <td class="px-6 py-4">
+                            <a href="tel:0596000000" class="text-gray-600 hover:text-green-500 transition-colors">0596 00 00 00</a>
+                        </td>
+                        <td class="px-6 py-4">
+                            <span class="font-bold text-yellow-500">⭐ 4.5</span>
+                        </td>
+                        <td class="px-6 py-4">
+                            <a href="commerce_details.html?id=1" class="text-sm font-bold px-3 py-1 rounded-full text-white hover:opacity-80 transition-opacity" style="background:#0ea5e9;">
+                                Voir →
+                            </a>
+                        </td>
+                    </tr>
+
+                    <tr class="commerce-row">
+                        <td class="px-6 py-4">
+                            <div class="flex items-center gap-3">
+                                <span class="text-2xl">📱</span>
+                                <span class="font-bold text-gray-800">Tech Caraïbes</span>
+                            </div>
+                        </td>
+                        <td class="px-6 py-4">
+                            <span class="badge text-white" style="background:#0ea5e9;">Électronique</span>
+                        </td>
+                        <td class="px-6 py-4 text-gray-600">📍 Lamentin</td>
+                        <td class="px-6 py-4">
+                            <a href="tel:0596123456" class="text-gray-600 hover:text-green-500 transition-colors">0596 12 34 56</a>
+                        </td>
+                        <td class="px-6 py-4">
+                            <span class="font-bold text-yellow-500">⭐ 4.2</span>
+                        </td>
+                        <td class="px-6 py-4">
+                            <a href="commerce_details.html?id=2" class="text-sm font-bold px-3 py-1 rounded-full text-white hover:opacity-80 transition-opacity" style="background:#0ea5e9;">
+                                Voir →
+                            </a>
+                        </td>
+                    </tr>
+
+                    <tr class="commerce-row">
+                        <td class="px-6 py-4">
+                            <div class="flex items-center gap-3">
+                                <span class="text-2xl">💇</span>
+                                <span class="font-bold text-gray-800">Beauté Créole</span>
+                            </div>
+                        </td>
+                        <td class="px-6 py-4">
+                            <span class="badge text-white" style="background:#f59e0b;">Beauté</span>
+                        </td>
+                        <td class="px-6 py-4 text-gray-600">📍 Schoelcher</td>
+                        <td class="px-6 py-4">
+                            <a href="tel:0596543210" class="text-gray-600 hover:text-green-500 transition-colors">0596 54 32 10</a>
+                        </td>
+                        <td class="px-6 py-4">
+                            <span class="font-bold text-yellow-500">⭐ 4.8</span>
+                        </td>
+                        <td class="px-6 py-4">
+                            <a href="commerce_details.html?id=3" class="text-sm font-bold px-3 py-1 rounded-full text-white hover:opacity-80 transition-opacity" style="background:#0ea5e9;">
+                                Voir →
+                            </a>
+                        </td>
+                    </tr>
+
+                </tbody>
+            </table>
+
+            <!-- Pied du tableau -->
+            <div class="px-6 py-4 border-t border-gray-100 text-xs text-gray-400 text-center">
+                3 commerces affichés — <a href="ajouter_commerce.html" class="underline hover:text-green-500 transition-colors">Référencer le vôtre</a>
+            </div>
+
+        </div>
+
+    </main>
+
+    <!-- ===== FOOTER ===== -->
+    <footer class="bg-gray-800 text-white py-8 px-4 mt-10 text-center">
+        <div class="flex items-center justify-center gap-2 mb-1">
+            <span>🌴</span>
+            <span class="font-titre" style="color:#18ca86;">KaribConnect</span>
+        </div>
+        <small class="text-gray-500 text-xs">&copy; 2026 KaribConnect — L1 Informatique UA</small>
+    </footer>
+
+</body>
+</html>

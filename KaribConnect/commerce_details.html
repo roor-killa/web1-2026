@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Détails - KaribConnect</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,opsz,wght@0,18..144,300..900;1,18..144,300..900&family=Pacifico&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        titre: ['Pacifico', 'cursive'],
+                        corps: ['Merriweather', 'serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { font-family: 'Merriweather', serif; }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50%       { transform: translateY(-10px); }
+        }
+        .float { animation: float 3s ease-in-out infinite; }
+
+        @keyframes fadein {
+            from { opacity: 0; transform: translateY(16px); }
+            to   { opacity: 1; transform: translateY(0); }
+        }
+        .fadein { animation: fadein 0.5s ease forwards; }
+
+        .badge {
+            display: inline-block;
+            padding: 0.25rem 0.85rem;
+            border-radius: 9999px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: white;
+        }
+
+        .horaire-row:nth-child(odd) { background: #f8fafc; }
+    </style>
+</head>
+<body class="bg-slate-50 text-gray-800">
+
+    <!-- ===== HEADER ===== -->
+    <header class="bg-white shadow-md sticky top-0 z-50">
+        <div class="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between">
+            <div class="flex items-center gap-2">
+                <span class="text-3xl float">🌴</span>
+                <a href="index.html" class="font-titre text-2xl" style="color:#18ca86;">KaribConnect</a>
+            </div>
+            <nav>
+                <a href="commerces_liste.html" class="text-sm font-semibold text-gray-600 hover:text-green-500 transition-colors">
+                    ← Retour à la liste
+                </a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- ===== CONTENU DYNAMIQUE ===== -->
+    <main id="page-content" class="fadein">
+        <!-- Rempli par JavaScript -->
+    </main>
+
+    <!-- ===== PAGE 404 (cachée par défaut) ===== -->
+    <div id="page-404" class="hidden text-center py-32 px-4">
+        <p class="text-6xl mb-4">🤷</p>
+        <h2 class="font-titre text-3xl mb-4" style="color:#18ca86;">Commerce introuvable</h2>
+        <p class="text-gray-500 mb-8">Ce commerce n'existe pas ou a été supprimé.</p>
+        <a href="commerces_liste.html"
+           class="inline-block text-white font-bold px-8 py-3 rounded-full hover:opacity-90 transition-opacity"
+           style="background:#18ca86;">
+            Voir tous les commerces
+        </a>
+    </div>
+
+    <!-- ===== FOOTER ===== -->
+    <footer class="bg-gray-800 text-white py-8 px-4 mt-10 text-center">
+        <div class="flex items-center justify-center gap-2 mb-1">
+            <span>🌴</span>
+            <span class="font-titre" style="color:#18ca86;">KaribConnect</span>
+        </div>
+        <small class="text-gray-500 text-xs">&copy; 2026 KaribConnect — L1 Informatique UA</small>
+    </footer>
+
+    <script>
+        // =============================================
+        // BASE DE DONNÉES DES COMMERCES
+        // =============================================
+        const commerces = [
+            {
+                id: 1,
+                nom: "La Savane Gourmande",
+                categorie: "Restaurant",
+                categorieIcone: "🍽️",
+                categorieCouleur: "#18ca86",
+                ville: "Fort-de-France",
+                adresse: "12 Rue de la Liberté, 97200 Fort-de-France",
+                telephone: "0596 00 00 00",
+                email: "contact@lasavanegourmande.fr",
+                siteWeb: "https://www.lasavanegourmande.fr",
+                note: 4.5,
+                nbAvis: 48,
+                description: "Restaurant créole authentique au cœur de Fort-de-France. Nous vous proposons une cuisine traditionnelle martiniquaise préparée avec des produits locaux frais : accras de morue, colombo de poulet, boudin créole et bien plus encore. Une expérience gustative unique dans un cadre chaleureux et convivial.",
+                gamme: "€€ Moyen",
+                services: ["🍽️ Sur place", "📦 À emporter", "🅿️ Parking", "💳 CB acceptée"],
+                horaires: [
+                    { jour: "Lundi",    ouverture: "08:00", fermeture: "22:00" },
+                    { jour: "Mardi",    ouverture: "08:00", fermeture: "22:00" },
+                    { jour: "Mercredi", ouverture: "08:00", fermeture: "22:00" },
+                    { jour: "Jeudi",    ouverture: "08:00", fermeture: "22:00" },
+                    { jour: "Vendredi", ouverture: "08:00", fermeture: "23:00" },
+                    { jour: "Samedi",   ouverture: "10:00", fermeture: "23:00" },
+                    { jour: "Dimanche", ouverture: null,    fermeture: null    },
+                ],
+                icone: "🍽️",
+                couleurBanner: "linear-gradient(135deg, #0ea5e9 0%, #18ca86 100%)",
+            },
+            {
+                id: 2,
+                nom: "Tech Caraïbes",
+                categorie: "Électronique",
+                categorieIcone: "📱",
+                categorieCouleur: "#0ea5e9",
+                ville: "Lamentin",
+                adresse: "Centre Commercial La Galleria, 97232 Lamentin",
+                telephone: "0596 12 34 56",
+                email: "info@techcaraibes.fr",
+                siteWeb: "https://www.techcaraibes.fr",
+                note: 4.2,
+                nbAvis: 31,
+                description: "Votre spécialiste en électronique et high-tech en Martinique. Smartphones, ordinateurs, tablettes, accessoires et réparations toutes marques. Notre équipe de techniciens qualifiés vous accompagne pour tous vos besoins numériques avec des conseils personnalisés.",
+                gamme: "€€ Moyen",
+                services: ["🔧 Réparation", "💳 CB acceptée", "🅿️ Parking", "📶 WiFi gratuit"],
+                horaires: [
+                    { jour: "Lundi",    ouverture: "09:00", fermeture: "19:00" },
+                    { jour: "Mardi",    ouverture: "09:00", fermeture: "19:00" },
+                    { jour: "Mercredi", ouverture: "09:00", fermeture: "19:00" },
+                    { jour: "Jeudi",    ouverture: "09:00", fermeture: "19:00" },
+                    { jour: "Vendredi", ouverture: "09:00", fermeture: "19:00" },
+                    { jour: "Samedi",   ouverture: "09:00", fermeture: "18:00" },
+                    { jour: "Dimanche", ouverture: "10:00", fermeture: "13:00" },
+                ],
+                icone: "📱",
+                couleurBanner: "linear-gradient(135deg, #0ea5e9 0%, #6366f1 100%)",
+            },
+            {
+                id: 3,
+                nom: "Beauté Créole",
+                categorie: "Beauté",
+                categorieIcone: "💇",
+                categorieCouleur: "#f59e0b",
+                ville: "Schoelcher",
+                adresse: "45 Avenue Pasteur, 97233 Schoelcher",
+                telephone: "0596 54 32 10",
+                email: "beaute.creole@gmail.com",
+                siteWeb: null,
+                note: 4.8,
+                nbAvis: 72,
+                description: "Salon de beauté et bien-être spécialisé dans les soins adaptés aux peaux et cheveux créoles. Coiffure, soins du visage, manucure, pédicure et massages relaxants. Une équipe passionnée vous accueille dans un cadre zen et raffiné pour prendre soin de vous.",
+                gamme: "€€ Moyen",
+                services: ["💇 Sur rendez-vous", "💳 CB acceptée", "♿ Accessible PMR", "📶 WiFi gratuit"],
+                horaires: [
+                    { jour: "Lundi",    ouverture: null,    fermeture: null    },
+                    { jour: "Mardi",    ouverture: "09:00", fermeture: "18:00" },
+                    { jour: "Mercredi", ouverture: "09:00", fermeture: "18:00" },
+                    { jour: "Jeudi",    ouverture: "09:00", fermeture: "18:00" },
+                    { jour: "Vendredi", ouverture: "09:00", fermeture: "19:00" },
+                    { jour: "Samedi",   ouverture: "08:00", fermeture: "17:00" },
+                    { jour: "Dimanche", ouverture: null,    fermeture: null    },
+                ],
+                icone: "💇",
+                couleurBanner: "linear-gradient(135deg, #f59e0b 0%, #f97316 100%)",
+            },
+        ];
+
+        // =============================================
+        // LECTURE DE L'URL ET AFFICHAGE
+        // =============================================
+        const params  = new URLSearchParams(window.location.search);
+        const id      = parseInt(params.get("id"));
+        const commerce = commerces.find(c => c.id === id);
+
+        if (!commerce) {
+            document.getElementById("page-404").classList.remove("hidden");
+        } else {
+            // Mise à jour du titre de l'onglet
+            document.title = commerce.nom + " - KaribConnect";
+
+            // Génération des étoiles
+            function etoiles(note) {
+                const plein  = Math.floor(note);
+                const demi   = note % 1 >= 0.5 ? 1 : 0;
+                const vide   = 5 - plein - demi;
+                return "⭐".repeat(plein) + (demi ? "✨" : "") + "☆".repeat(vide);
+            }
+
+            // Génération des horaires
+            const horaireRows = commerce.horaires.map(h => `
+                <tr class="horaire-row">
+                    <td class="px-4 py-3 font-semibold text-gray-700 text-sm w-32">${h.jour}</td>
+                    <td class="px-4 py-3 text-sm ${h.ouverture ? 'text-gray-600' : 'text-red-400 font-semibold'}">
+                        ${h.ouverture ? `${h.ouverture} – ${h.fermeture}` : 'Fermé'}
+                    </td>
+                </tr>
+            `).join("");
+
+            // Génération des services
+            const servicesBadges = commerce.services.map(s => `
+                <span class="inline-block bg-gray-100 text-gray-700 text-xs font-semibold px-3 py-2 rounded-xl">${s}</span>
+            `).join("");
+
+            // Injection dans la page
+            document.getElementById("page-content").innerHTML = `
+
+                <!-- BANNER -->
+                <div class="text-white py-14 px-4 text-center" style="background: ${commerce.couleurBanner};">
+                    <p class="text-6xl mb-3">${commerce.icone}</p>
+                    <h2 class="font-titre text-4xl drop-shadow mb-2">${commerce.nom}</h2>
+                    <span class="badge" style="background:rgba(255,255,255,0.25); border: 1px solid rgba(255,255,255,0.5);">
+                        ${commerce.categorieIcone} ${commerce.categorie}
+                    </span>
+                    <div class="mt-3 text-yellow-200 text-lg">${etoiles(commerce.note)}
+                        <span class="text-white text-sm ml-1">${commerce.note}/5 (${commerce.nbAvis} avis)</span>
+                    </div>
+                </div>
+
+                <div class="max-w-4xl mx-auto px-4 py-10 space-y-8">
+
+                    <!-- DESCRIPTION -->
+                    <div class="bg-white rounded-2xl shadow-md p-8 border-l-4" style="border-color:${commerce.categorieCouleur};">
+                        <h3 class="font-titre text-xl mb-4" style="color:${commerce.categorieCouleur};">📝 À propos</h3>
+                        <p class="text-gray-600 leading-relaxed">${commerce.description}</p>
+                        <div class="mt-4 flex items-center gap-3">
+                            <span class="text-sm font-bold text-gray-500">Gamme de prix :</span>
+                            <span class="badge" style="background:${commerce.categorieCouleur};">${commerce.gamme}</span>
+                        </div>
+                    </div>
+
+                    <!-- COORDONNÉES + HORAIRES -->
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+
+                        <!-- Coordonnées -->
+                        <div class="bg-white rounded-2xl shadow-md p-8 border-l-4" style="border-color:#0ea5e9;">
+                            <h3 class="font-titre text-xl mb-5" style="color:#0ea5e9;">📍 Coordonnées</h3>
+                            <ul class="space-y-4 text-sm text-gray-600">
+                                <li class="flex items-start gap-3">
+                                    <span class="text-xl">🗺️</span>
+                                    <span>${commerce.adresse}</span>
+                                </li>
+                                <li class="flex items-center gap-3">
+                                    <span class="text-xl">📞</span>
+                                    <a href="tel:${commerce.telephone.replace(/\s/g,'')}"
+                                       class="hover:text-green-500 transition-colors font-semibold">
+                                        ${commerce.telephone}
+                                    </a>
+                                </li>
+                                <li class="flex items-center gap-3">
+                                    <span class="text-xl">📧</span>
+                                    <a href="mailto:${commerce.email}"
+                                       class="hover:text-green-500 transition-colors">
+                                        ${commerce.email}
+                                    </a>
+                                </li>
+                                ${commerce.siteWeb ? `
+                                <li class="flex items-center gap-3">
+                                    <span class="text-xl">🌐</span>
+                                    <a href="${commerce.siteWeb}" target="_blank"
+                                       class="hover:text-green-500 transition-colors underline">
+                                        ${commerce.siteWeb.replace('https://', '')}
+                                    </a>
+                                </li>` : ''}
+                            </ul>
+                        </div>
+
+                        <!-- Horaires -->
+                        <div class="bg-white rounded-2xl shadow-md overflow-hidden border-l-4" style="border-color:#f59e0b;">
+                            <div class="px-8 py-5 border-b border-gray-100">
+                                <h3 class="font-titre text-xl" style="color:#f59e0b;">🕐 Horaires</h3>
+                            </div>
+                            <table class="w-full">
+                                <tbody>${horaireRows}</tbody>
+                            </table>
+                        </div>
+
+                    </div>
+
+                    <!-- SERVICES -->
+                    <div class="bg-white rounded-2xl shadow-md p-8 border-l-4" style="border-color:#18ca86;">
+                        <h3 class="font-titre text-xl mb-5" style="color:#18ca86;">✅ Services disponibles</h3>
+                        <div class="flex flex-wrap gap-3">${servicesBadges}</div>
+                    </div>
+
+                    <!-- ACTIONS -->
+                    <div class="flex flex-col sm:flex-row gap-4">
+                        <a href="tel:${commerce.telephone.replace(/\s/g,'')}"
+                           class="flex-1 text-center text-white font-bold py-4 rounded-full text-lg shadow-lg hover:opacity-90 hover:scale-105 transition-all duration-300"
+                           style="background:#18ca86;">
+                            📞 Appeler maintenant
+                        </a>
+                        <a href="commerces_liste.html"
+                           class="flex-1 text-center font-bold py-4 rounded-full text-lg border-2 border-gray-300 text-gray-600 hover:bg-gray-50 transition-all duration-300">
+                            ← Retour à la liste
+                        </a>
+                    </div>
+
+                </div>
+            `;
+        }
+    </script>
+
+</body>
+</html>
