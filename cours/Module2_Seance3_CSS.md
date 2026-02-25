@@ -1107,11 +1107,3 @@ header.scrolled {
    - Liste des composants réutilisables
 
 ---
-
-## 🎯 Prochaine séance
-
-**Module 3 - JavaScript : Interactivité**
-- DOM manipulation
-- Événements
-- Filtres dynamiques
-- API Fetch
