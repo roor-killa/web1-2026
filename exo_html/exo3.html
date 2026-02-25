@@ -4,9 +4,45 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Découvrez les meilleurs commerces et services de Martinique">
+    
     <title>KaribConnect - Commerces de Martinique</title>
+    <!-- link rel="stylesheet" href="style.css" -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Sofia">
+    <link href="./output.css" rel="stylesheet">
+    <style>
+        table {
+  font-family: Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+td, th {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+tr:nth-child(even){background-color: #f2f2f2;}
+
+tr:hover {background-color: #ddd;}
+
+th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: #04AA6D;
+  color: white;
+}
+    </style>
 </head>
 <body>
+
+    <h1 class="text-3xl font-bold underline">
+        Hello Martinique !
+    </h1>
+
+<button class="bg-sky-500 hover:bg-sky-700 ...">Save changes</button>
+
+
     <!-- En-tête de la page -->
     <header>
         <h1>🌴 KaribConnect</h1>
@@ -26,10 +62,36 @@
 
     <!-- Contenu principal -->
     <main>
+        <!-- Section Table -->
+        <table>
+        <tr>
+            <td >Nom : </td>
+            <td><input type="input"></td>
+            <td rowspan="3"><img src="boston.jpg" height="150px"></td>
+        </tr>
+        <tr>
+            <td>Prénom : </td>
+            <td><input type="input"></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>Description : </td>
+            <td>
+                <textarea>
+                    Hello !
+                </textarea></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td> </td>
+            <td><input type="submit" value="Envoyer"></td>
+            <td></td>
+        </tr>
+    </table>
         <!-- Section hero -->
-        <section id="accueil">
-            <h2>Découvrez la Martinique autrement</h2>
-            <p style="color: blue;">Plus de 200 commerces locaux référencés à Fort-de-France, Lamentin et Schoelcher</p>
+        <section id="accueil" class="highlight">
+            <h2 class="monsuperstyle">Découvrez la Martinique autrement</h2>
+            <p>Plus de 200 commerces locaux référencés à Fort-de-France, Lamentin et Schoelcher</p>
         </section>
 
         <section id="recherche">
@@ -116,10 +178,10 @@
     </section>
 
         <!-- Section commerces vedettes -->
-        <section id="commerces-vedettes">
-            <h2>Commerces à la une</h2>
+         <h2>Commerces à la une</h2>
             <p>Découvrez nos partenaires vedettes</p>
-
+        <section id="commerces-vedettes">
+            
             <!-- Commerce 1 : Restaurant -->
             <article>
                 <h3>🍽️ La Savane Gourmande</h3>
