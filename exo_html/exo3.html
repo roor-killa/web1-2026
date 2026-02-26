@@ -4,251 +4,266 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Découvrez les meilleurs commerces et services de Martinique">
-    
     <title>KaribConnect - Commerces de Martinique</title>
-    <!-- link rel="stylesheet" href="style.css" -->
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Sofia">
     <link href="./output.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Lexend:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
-        table {
-  font-family: Arial, Helvetica, sans-serif;
-  border-collapse: collapse;
-  width: 100%;
-}
-
-td, th {
-  border: 1px solid #ddd;
-  padding: 8px;
-}
-
-tr:nth-child(even){background-color: #f2f2f2;}
-
-tr:hover {background-color: #ddd;}
-
-th {
-  padding-top: 12px;
-  padding-bottom: 12px;
-  text-align: left;
-  background-color: #04AA6D;
-  color: white;
-}
+        body { font-family: 'Inter', sans-serif; }
+        .font-display { font-family: 'Lexend', sans-serif; }
     </style>
 </head>
-<body>
+<body class="bg-white antialiased">
 
-    <h1 class="text-3xl font-bold underline">
-        Hello Martinique !
-    </h1>
-
-<button class="bg-sky-500 hover:bg-sky-700 ...">Save changes</button>
-
-
-    <!-- En-tête de la page -->
-    <header>
-        <h1>🌴 KaribConnect</h1>
-        <p>Votre guide des commerces martiniquais</p>
+    <!-- Navbar -->
+    <header class="sticky top-0 z-50 bg-white border-b border-slate-100">
+        <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+            <div class="flex items-center gap-x-8">
+                <a href="#" class="text-xl font-bold text-slate-900 font-display">
+                    🌴 KaribConnect
+                </a>
+                <nav class="hidden md:flex gap-x-6">
+                    <a href="#accueil" class="text-sm text-slate-600 hover:text-slate-900">Accueil</a>
+                    <a href="#commerces" class="text-sm text-slate-600 hover:text-slate-900">Commerces</a>
+                    <a href="#restaurants" class="text-sm text-slate-600 hover:text-slate-900">Restaurants</a>
+                    <a href="#services" class="text-sm text-slate-600 hover:text-slate-900">Services</a>
+                    <a href="#contact" class="text-sm text-slate-600 hover:text-slate-900">Contact</a>
+                </nav>
+            </div>
+            <div class="flex gap-x-3">
+                <a href="#" class="inline-flex items-center justify-center rounded-full px-4 py-2 text-sm font-medium text-slate-700 ring-1 ring-slate-200 hover:ring-slate-400">
+                    Se connecter
+                </a>
+                <a href="#" class="inline-flex items-center justify-center rounded-full px-4 py-2 text-sm font-medium text-white bg-slate-900 hover:bg-slate-700">
+                    Inscrire mon commerce
+                </a>
+            </div>
+        </div>
     </header>
 
-    <!-- Navigation principale -->
-    <nav>
-        <ul>
-            <li><a href="#accueil">Accueil</a></li>
-            <li><a href="#commerces">Commerces</a></li>
-            <li><a href="#restaurants">Restaurants</a></li>
-            <li><a href="#services">Services</a></li>
-            <li><a href="#contact">Contact</a></li>
-        </ul>
-    </nav>
-
-    <!-- Contenu principal -->
     <main>
-        <!-- Section Table -->
-        <table>
-        <tr>
-            <td >Nom : </td>
-            <td><input type="input"></td>
-            <td rowspan="3"><img src="boston.jpg" height="150px"></td>
-        </tr>
-        <tr>
-            <td>Prénom : </td>
-            <td><input type="input"></td>
-            <td></td>
-        </tr>
-        <tr>
-            <td>Description : </td>
-            <td>
-                <textarea>
-                    Hello !
-                </textarea></td>
-            <td></td>
-        </tr>
-        <tr>
-            <td> </td>
-            <td><input type="submit" value="Envoyer"></td>
-            <td></td>
-        </tr>
-    </table>
-        <!-- Section hero -->
-        <section id="accueil" class="highlight">
-            <h2 class="monsuperstyle">Découvrez la Martinique autrement</h2>
-            <p>Plus de 200 commerces locaux référencés à Fort-de-France, Lamentin et Schoelcher</p>
+
+        <!-- Hero Section -->
+        <section id="accueil" class="bg-slate-50 py-24 px-6">
+            <div class="max-w-4xl mx-auto text-center">
+                <h1 class="font-display text-5xl font-bold tracking-tight text-slate-900 sm:text-7xl">
+                    Découvrez la
+                    <span class="relative text-blue-600">
+                        Martinique
+                        <svg class="absolute -bottom-1 left-0 w-full h-3" viewBox="0 0 300 12" aria-hidden="true" preserveAspectRatio="none">
+                            <path d="M2 10C60 4 120 2 150 5s90 3 148-3" stroke="#2563EB" stroke-width="3" fill="none" stroke-linecap="round"/>
+                        </svg>
+                    </span>
+                    autrement
+                </h1>
+                <p class="mt-8 text-lg text-slate-600 max-w-2xl mx-auto">
+                    Plus de 200 commerces locaux référencés à Fort-de-France, Lamentin et Schoelcher.
+                    Trouvez les meilleures adresses de l'île.
+                </p>
+                <div class="mt-10 flex flex-col sm:flex-row gap-4 justify-center">
+                    <a href="#recherche" class="inline-flex items-center justify-center rounded-full px-6 py-3 text-sm font-medium text-white bg-slate-900 hover:bg-slate-700">
+                        Explorer les commerces
+                    </a>
+                    <a href="#categories" class="inline-flex items-center justify-center rounded-full px-6 py-3 text-sm font-medium text-slate-700 ring-1 ring-slate-200 hover:ring-slate-400">
+                        Voir les catégories
+                    </a>
+                </div>
+            </div>
         </section>
 
-        <section id="recherche">
-        <h2>Trouvez votre commerce</h2>
-        
-        <form>
-            <!-- Champ de recherche par nom -->
-            <div>
-                <label for="nom-commerce">Nom du commerce :</label>
-                <input 
-                    type="text" 
-                    id="nom-commerce" 
-                    name="nom-commerce" 
-                    placeholder="Ex: Restaurant, Coiffeur..."
-                >
+        <!-- Search Section -->
+        <section id="recherche" class="py-20 px-6">
+            <div class="max-w-3xl mx-auto">
+                <div class="text-center mb-10">
+                    <h2 class="font-display text-3xl font-semibold text-slate-900">Trouvez votre commerce</h2>
+                    <p class="mt-3 text-slate-600">Recherchez parmi nos 200+ établissements référencés</p>
+                </div>
+                <div class="bg-white rounded-3xl shadow-xl p-8 ring-1 ring-slate-100">
+                    <form class="flex flex-col gap-5">
+                        <div class="flex flex-col gap-1">
+                            <label for="nom-commerce" class="text-sm font-medium text-slate-700">Nom du commerce</label>
+                            <input
+                                type="text"
+                                id="nom-commerce"
+                                name="nom-commerce"
+                                placeholder="Ex: Restaurant, Coiffeur..."
+                                class="rounded-xl border border-slate-200 px-4 py-3 text-sm text-slate-900 placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-600"
+                            >
+                        </div>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                            <div class="flex flex-col gap-1">
+                                <label for="ville" class="text-sm font-medium text-slate-700">Ville</label>
+                                <select id="ville" name="ville" class="rounded-xl border border-slate-200 px-4 py-3 text-sm text-slate-900 focus:outline-none focus:ring-2 focus:ring-blue-600">
+                                    <option value="">Toutes les villes</option>
+                                    <option value="fort-de-france">Fort-de-France</option>
+                                    <option value="lamentin">Lamentin</option>
+                                    <option value="schoelcher">Schoelcher</option>
+                                    <option value="ducos">Ducos</option>
+                                    <option value="riviere-salee">Rivière-Salée</option>
+                                </select>
+                            </div>
+                            <div class="flex flex-col gap-1">
+                                <label for="categorie" class="text-sm font-medium text-slate-700">Catégorie</label>
+                                <select id="categorie" name="categorie" class="rounded-xl border border-slate-200 px-4 py-3 text-sm text-slate-900 focus:outline-none focus:ring-2 focus:ring-blue-600">
+                                    <option value="">Toutes catégories</option>
+                                    <option value="restaurant">Restaurants</option>
+                                    <option value="epicerie">Épiceries</option>
+                                    <option value="vetements">Vêtements</option>
+                                    <option value="electronique">Électronique</option>
+                                    <option value="beaute">Beauté &amp; Bien-être</option>
+                                    <option value="services">Services</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="flex gap-3 pt-1">
+                            <button type="submit" class="flex-1 inline-flex items-center justify-center rounded-full px-6 py-3 text-sm font-medium text-white bg-blue-600 hover:bg-blue-500">
+                                🔍 Rechercher
+                            </button>
+                            <button type="reset" class="inline-flex items-center justify-center rounded-full px-5 py-3 text-sm font-medium text-slate-600 ring-1 ring-slate-200 hover:ring-slate-400">
+                                Réinitialiser
+                            </button>
+                        </div>
+                    </form>
+                </div>
             </div>
-
-            <!-- Sélection de la ville -->
-            <div>
-                <label for="ville">Ville :</label>
-                <select id="ville" name="ville">
-                    <option value="">Toutes les villes</option>
-                    <option value="fort-de-france">Fort-de-France</option>
-                    <option value="lamentin">Lamentin</option>
-                    <option value="schoelcher">Schoelcher</option>
-                    <option value="ducos">Ducos</option>
-                    <option value="riviere-salee">Rivière-Salée</option>
-                </select>
-            </div>
-
-            <!-- Sélection de la catégorie -->
-            <div>
-                <label for="categorie">Catégorie :</label>
-                <select id="categorie" name="categorie">
-                    <option value="">Toutes catégories</option>
-                    <option value="restaurant">Restaurants</option>
-                    <option value="epicerie">Épiceries</option>
-                    <option value="vetements">Vêtements</option>
-                    <option value="electronique">Électronique</option>
-                    <option value="beaute">Beauté & Bien-être</option>
-                    <option value="services">Services</option>
-                </select>
-            </div>
-
-            <!-- Bouton de recherche -->
-            <button type="submit">🔍 Rechercher</button>
-            <button type="reset">Réinitialiser</button>
-        </form>
-    </section>
-
-    <section id="categories">
-        <h2>Explorer par catégorie</h2>
-        
-        <ul>
-            <li>
-                <a href="#restaurants">
-                    <span>🍽️</span>
-                    <strong>Restaurants</strong>
-                    <p>42 établissements</p>
-                </a>
-            </li>
-            <li>
-                <a href="#epiceries">
-                    <span>🛒</span>
-                    <strong>Épiceries</strong>
-                    <p>28 établissements</p>
-                </a>
-            </li>
-            <li>
-                <a href="#beaute">
-                    <span>💇</span>
-                    <strong>Beauté</strong>
-                    <p>35 établissements</p>
-                </a>
-            </li>
-            <li>
-                <a href="#services">
-                    <span>🔧</span>
-                    <strong>Services</strong>
-                    <p>51 établissements</p>
-                </a>
-            </li>
-        </ul>
-    </section>
-
-        <!-- Section commerces vedettes -->
-         <h2>Commerces à la une</h2>
-            <p>Découvrez nos partenaires vedettes</p>
-        <section id="commerces-vedettes">
-            
-            <!-- Commerce 1 : Restaurant -->
-            <article>
-                <h3>🍽️ La Savane Gourmande</h3>
-                <p><strong>Catégorie :</strong> Restaurant créole</p>
-                <p><strong>Adresse :</strong> 45 Rue Victor Hugo, Fort-de-France</p>
-                <p><strong>Téléphone :</strong> 0596 XX XX XX</p>
-                <p>
-                    Restaurant créole authentique au cœur de Fort-de-France. 
-                    Spécialités : colombo, court-bouillon, accras.
-                </p>
-                <button>Voir les détails</button>
-            </article>
-
-            <!-- Commerce 2 : Épicerie -->
-            <article>
-                <h3>🛒 Epicerie Express</h3>
-                <p><strong>Catégorie :</strong> Épicerie locale</p>
-                <p><strong>Adresse :</strong> 12 Avenue des Caraïbes, Lamentin</p>
-                <p><strong>Horaires :</strong> Lun-Sam 7h-20h</p>
-                <p>
-                    Produits frais et locaux. Fruits, légumes pays, épices créoles.
-                    Livraison à domicile disponible.
-                </p>
-                <button>Voir les détails</button>
-            </article>
-
-            <!-- Commerce 3 : Service -->
-            <article>
-                <h3>🔧 TechKarib Réparation</h3>
-                <p><strong>Catégorie :</strong> Réparation électronique</p>
-                <p><strong>Adresse :</strong> Zone Industrielle, Schoelcher</p>
-                <p><strong>Services :</strong> Smartphones, ordinateurs, tablettes</p>
-                <p>
-                    Réparation rapide de vos appareils électroniques. 
-                    Diagnostic gratuit, garantie 3 mois.
-                </p>
-                <button>Voir les détails</button>
-            </article>
         </section>
+
+        <!-- Categories Section -->
+        <section id="categories" class="py-20 px-6 bg-slate-50">
+            <div class="max-w-5xl mx-auto">
+                <div class="text-center mb-12">
+                    <h2 class="font-display text-3xl font-semibold text-slate-900">Explorer par catégorie</h2>
+                    <p class="mt-3 text-slate-600">Parcourez nos établissements par type d'activité</p>
+                </div>
+                <ul class="grid grid-cols-2 sm:grid-cols-4 gap-6 list-none p-0 m-0">
+                    <li>
+                        <a href="#restaurants" class="flex flex-col items-center text-center p-6 bg-white rounded-3xl ring-1 ring-slate-100 hover:ring-blue-200 hover:shadow-md group">
+                            <span class="text-4xl mb-3">🍽️</span>
+                            <strong class="text-slate-900 font-semibold text-sm group-hover:text-blue-600">Restaurants</strong>
+                            <p class="text-xs text-slate-500 mt-1">42 établissements</p>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#epiceries" class="flex flex-col items-center text-center p-6 bg-white rounded-3xl ring-1 ring-slate-100 hover:ring-blue-200 hover:shadow-md group">
+                            <span class="text-4xl mb-3">🛒</span>
+                            <strong class="text-slate-900 font-semibold text-sm group-hover:text-blue-600">Épiceries</strong>
+                            <p class="text-xs text-slate-500 mt-1">28 établissements</p>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#beaute" class="flex flex-col items-center text-center p-6 bg-white rounded-3xl ring-1 ring-slate-100 hover:ring-blue-200 hover:shadow-md group">
+                            <span class="text-4xl mb-3">💇</span>
+                            <strong class="text-slate-900 font-semibold text-sm group-hover:text-blue-600">Beauté</strong>
+                            <p class="text-xs text-slate-500 mt-1">35 établissements</p>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#services" class="flex flex-col items-center text-center p-6 bg-white rounded-3xl ring-1 ring-slate-100 hover:ring-blue-200 hover:shadow-md group">
+                            <span class="text-4xl mb-3">🔧</span>
+                            <strong class="text-slate-900 font-semibold text-sm group-hover:text-blue-600">Services</strong>
+                            <p class="text-xs text-slate-500 mt-1">51 établissements</p>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Featured Commerce Section -->
+        <section id="commerces-vedettes" class="py-20 px-6">
+            <div class="max-w-5xl mx-auto">
+                <div class="text-center mb-12">
+                    <h2 class="font-display text-3xl font-semibold text-slate-900">Commerces à la une</h2>
+                    <p class="mt-3 text-slate-600">Découvrez nos partenaires vedettes</p>
+                </div>
+                <div class="grid grid-cols-3 gap-6">
+
+                    <!-- Commerce 1 : Restaurant -->
+                    <article class="bg-white rounded-3xl ring-1 ring-slate-100 shadow-xl p-6 flex flex-col">
+                        <span class="text-3xl mb-4">🍽️</span>
+                        <h3 class="font-display text-lg font-semibold text-slate-900">La Savane Gourmande</h3>
+                        <p class="text-sm text-blue-600 font-medium mt-1">Restaurant créole</p>
+                        <div class="mt-4 flex-1 space-y-2">
+                            <p class="text-sm text-slate-600">📍 45 Rue Victor Hugo, Fort-de-France</p>
+                            <p class="text-sm text-slate-600">📞 0596 XX XX XX</p>
+                            <p class="text-sm text-slate-500 mt-3 border-t border-slate-100 pt-3">
+                                Spécialités : colombo, court-bouillon, accras créoles au cœur de Fort-de-France.
+                            </p>
+                        </div>
+                        <button class="mt-6 inline-flex items-center justify-center rounded-full px-4 py-2 text-sm font-medium text-slate-700 ring-1 ring-slate-200 hover:ring-slate-400">
+                            Voir les détails
+                        </button>
+                    </article>
+
+                    <!-- Commerce 2 : Épicerie (plan vedette, fond bleu) -->
+                    <article class="bg-blue-600 rounded-3xl shadow-xl p-6 flex flex-col">
+                        <span class="text-3xl mb-4">🛒</span>
+                        <h3 class="font-display text-lg font-semibold text-white">Epicerie Express</h3>
+                        <p class="text-sm text-blue-200 font-medium mt-1">Épicerie locale</p>
+                        <div class="mt-4 flex-1 space-y-2">
+                            <p class="text-sm text-blue-100">📍 12 Avenue des Caraïbes, Lamentin</p>
+                            <p class="text-sm text-blue-100">🕐 Lun-Sam 7h-20h</p>
+                            <p class="text-sm text-blue-200 mt-3 border-t border-blue-500 pt-3">
+                                Produits frais et locaux. Fruits, légumes pays, épices créoles. Livraison disponible.
+                            </p>
+                        </div>
+                        <button class="mt-6 inline-flex items-center justify-center rounded-full px-4 py-2 text-sm font-medium text-white ring-1 ring-white/40 hover:ring-white">
+                            Voir les détails
+                        </button>
+                    </article>
+
+                    <!-- Commerce 3 : Service -->
+                    <article class="bg-white rounded-3xl ring-1 ring-slate-100 shadow-xl p-6 flex flex-col">
+                        <span class="text-3xl mb-4">🔧</span>
+                        <h3 class="font-display text-lg font-semibold text-slate-900">TechKarib Réparation</h3>
+                        <p class="text-sm text-blue-600 font-medium mt-1">Réparation électronique</p>
+                        <div class="mt-4 flex-1 space-y-2">
+                            <p class="text-sm text-slate-600">📍 Zone Industrielle, Schoelcher</p>
+                            <p class="text-sm text-slate-600">🛠️ Smartphones, ordinateurs, tablettes</p>
+                            <p class="text-sm text-slate-500 mt-3 border-t border-slate-100 pt-3">
+                                Réparation rapide. Diagnostic gratuit, garantie 3 mois sur toutes interventions.
+                            </p>
+                        </div>
+                        <button class="mt-6 inline-flex items-center justify-center rounded-full px-4 py-2 text-sm font-medium text-slate-700 ring-1 ring-slate-200 hover:ring-slate-400">
+                            Voir les détails
+                        </button>
+                    </article>
+
+                </div>
+            </div>
+        </section>
+
     </main>
 
-    <!-- Pied de page -->
-    <footer>
-    <section>
-        <h3>À propos</h3>
-        <p>
-            KaribConnect est un projet étudiant de l'Université des Antilles 
-            visant à promouvoir les commerces locaux de Martinique.
-        </p>
-    </section>
-    
-    <section>
-        <h3>Contact</h3>
-        <p>Email : contact@karibconnect.fr</p>
-        <p>Téléphone : 0596 XX XX XX</p>
-    </section>
-    
-    <section>
-        <h3>Suivez-nous</h3>
-        <ul>
-            <li><a href="#">Facebook</a></li>
-            <li><a href="#">Instagram</a></li>
-            <li><a href="#">Twitter</a></li>
-        </ul>
-    </section>
-    
-    <p>&copy; 2026 KaribConnect - Université des Antilles - L1 Informatique</p>
-</footer>
+    <!-- Footer -->
+    <footer id="contact" class="bg-slate-50 border-t border-slate-200 py-14 px-6">
+        <div class="max-w-5xl mx-auto">
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-10 mb-10">
+                <div>
+                    <p class="font-display text-base font-semibold text-slate-900 mb-3">🌴 KaribConnect</p>
+                    <p class="text-sm text-slate-600">
+                        Projet étudiant de l'Université des Antilles visant à promouvoir
+                        les commerces locaux de Martinique.
+                    </p>
+                </div>
+                <div>
+                    <p class="font-display text-base font-semibold text-slate-900 mb-3">Contact</p>
+                    <p class="text-sm text-slate-600">✉️ contact@karibconnect.fr</p>
+                    <p class="text-sm text-slate-600 mt-2">📞 0596 XX XX XX</p>
+                </div>
+                <div>
+                    <p class="font-display text-base font-semibold text-slate-900 mb-3">Suivez-nous</p>
+                    <ul class="flex gap-4 list-none p-0 m-0">
+                        <li><a href="#" class="text-sm text-slate-600 hover:text-slate-900">Facebook</a></li>
+                        <li><a href="#" class="text-sm text-slate-600 hover:text-slate-900">Instagram</a></li>
+                        <li><a href="#" class="text-sm text-slate-600 hover:text-slate-900">Twitter</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-slate-200 pt-6 text-center">
+                <p class="text-sm text-slate-500">&copy; 2026 KaribConnect — Université des Antilles — L1 Informatique</p>
+            </div>
+        </div>
+    </footer>
+
 </body>
 </html>
