@@ -1,0 +1,102 @@
+<section id="commerces-vedettes">
+    <h2>Commerces à la une</h2>
+    
+    <!-- Commerce 1 : Restaurant -->
+    <article>
+        <h3>🍽️ La Savane Gourmande</h3>
+        <p><strong>Catégorie :</strong> Restaurant créole</p>
+        <p><strong>Adresse :</strong> 45 Rue Victor Hugo, Fort-de-France</p>
+        <p><strong>Téléphone :</strong> 0596 XX XX XX</p>
+        <p>
+            Restaurant créole authentique au cœur de Fort-de-France. 
+            Spécialités : colombo, court-bouillon, accras.
+        </p>
+        <button>Voir les détails</button>
+    </article>
+</section>
+<section style="display: flex; gap: 20px; justify-content: center; padding: 20px;">
+    <div>
+        <h3>Image 1</h3>
+        <img src="https://picsum.photos/300/200?random=1" alt="Image aléatoire 1" style="border-radius: 8px;">
+    </div>
+
+    <div>
+        <h3>Image 2</h3>
+        <img src="https://picsum.photos/300/200?random=2" alt="Image aléatoire 2" style="border-radius: 8px;">
+    </div>
+
+    <div>
+        <h3>Image 3</h3>
+        <img src="https://picsum.photos/300/200?random=3" alt="Image aléatoire 3" style="border-radius: 8px;">
+    </div>
+</section>
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mon Commerce - Accueil</title>
+    <style>
+        body { font-family: sans-serif; line-height: 1.6; margin: 0; padding: 20px; color: #333; }
+        nav { margin-bottom: 20px; color: #666; }
+        table { width: 100%; border-collapse: collapse; margin: 20px 0; }
+        th, td { border: 1px solid #ddd; padding: 12px; text-align: left; }
+        th { background-color: #f4f4f4; }
+        form { display: flex; flex-direction: column; gap: 10px; max-width: 400px; margin-top: 20px; }
+        input, textarea, button { padding: 10px; border: 1px solid #ccc; border-radius: 4px; font-size: 14px; }
+        button { background-color: #007BFF; color: white; cursor: pointer; border: none; font-weight: bold; }
+        button:hover { background-color: #0056b3; }
+        h2 { border-bottom: 2px solid #eee; padding-bottom: 5px; margin-top: 30px; }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <a href="#">Accueil</a> &gt; <span>Boutique</span>
+    </nav>
+
+    <h1>Bienvenue dans notre boutique</h1>
+
+    <h2>Nos Horaires</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Jour</th>
+                <th>Matin</th>
+                <th>Après-midi</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Lundi - Vendredi</td>
+                <td>09:00 - 12:00</td>
+                <td>14:00 - 18:00</td>
+            </tr>
+            <tr>
+                <td>Samedi</td>
+                <td>10:00 - 13:00</td>
+                <td>Fermé</td>
+            </tr>
+            <tr>
+                <td>Dimanche</td>
+                <td colspan="2" style="text-align: center; color: #d9534f;">Fermé</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h2>Nous contacter</h2>
+    <form action="#">
+        <label for="name">Nom :</label>
+        <input type="text" id="name" name="name" placeholder="Votre nom" required>
+
+        <label for="email">Email :</label>
+        <input type="email" id="email" name="email" placeholder="votre@email.com" required>
+
+        <label for="message">Message :</label>
+        <textarea id="message" name="message" rows="4" placeholder="Comment pouvons-nous vous aider ?" required></textarea>
+
+        <button type="submit">Envoyer le message</button>
+    </form>
+
+</body>
+</html>
