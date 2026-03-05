@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="fr" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Découvrez les meilleurs commerces et services de Martinique">
+    <title>KaribConnect - Open PRO Style</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-slate-900 text-slate-400 font-sans antialiased tracking-tight min-h-screen flex flex-col selection:bg-teal-500 selection:text-white">
+
+    <nav class="fixed w-full z-50 transition duration-300 ease-in-out backdrop-blur-md bg-slate-900/80 border-b border-slate-800">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6">
+            <div class="flex items-center justify-between h-16 md:h-20">
+                <div class="shrink-0 mr-4">
+                    <a href="#" class="block text-2xl font-bold text-white tracking-tighter">
+                        🌴 Karib<span class="text-transparent bg-clip-text bg-gradient-to-r from-teal-400 to-blue-500">Connect</span>
+                    </a>
+                </div>
+                <ul class="flex grow justify-end flex-wrap items-center gap-4 sm:gap-8 list-none m-0 p-0">
+                    <li><a href="#commerces-vedettes" class="text-sm font-medium text-slate-300 hover:text-white transition duration-150 ease-in-out">À la une</a></li>
+                    <li><a href="#recherche" class="text-sm font-medium text-slate-300 hover:text-white transition duration-150 ease-in-out">Recherche</a></li>
+                    <li><a href="#categories" class="text-sm font-medium text-slate-300 hover:text-white transition duration-150 ease-in-out">Catégories</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="absolute left-1/2 -translate-x-1/2 pointer-events-none -z-10 w-full max-w-6xl mx-auto" aria-hidden="true">
+        <div class="absolute top-0 w-full h-[500px] bg-gradient-to-b from-blue-500/20 to-transparent opacity-50 blur-[100px]"></div>
+    </div>
+
+    <main class="max-w-6xl mx-auto px-4 sm:px-6 pt-32 pb-12 flex-grow w-full">
+        
+        <section id="accueil" class="text-center pt-10 pb-16 md:pt-16 md:pb-24">
+            <h1 class="text-5xl md:text-6xl font-extrabold tracking-tighter mb-4 text-white">
+                Découvrez la Martinique <br class="hidden lg:block">
+                <span class="text-transparent bg-clip-text bg-gradient-to-r from-teal-400 to-blue-500">autrement.</span>
+            </h1>
+            <p class="text-xl text-slate-400 mb-8 max-w-2xl mx-auto">
+                Plus de 200 commerces locaux référencés à Fort-de-France, Lamentin et Schoelcher. Le guide tech de votre quotidien.
+            </p>
+        </section>
+
+        <section id="commerces-vedettes" class="mb-24">
+            <div class="max-w-3xl mx-auto text-center pb-12">
+                <h2 class="h2 text-3xl font-bold text-white mb-4">Commerces à la une</h2>
+                <p class="text-xl text-slate-400">Sélectionnés pour leur qualité de service.</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <article class="p-6 bg-slate-800 rounded-2xl border border-slate-700 shadow-2xl hover:border-slate-600 transition duration-300 ease-in-out flex flex-col">
+                    <div class="w-12 h-12 rounded-full bg-slate-900 flex items-center justify-center mb-4 border border-slate-700">🍽️</div>
+                    <h3 class="text-xl font-bold text-white mb-2">La Savane Gourmande</h3>
+                    <div class="text-sm text-teal-400 font-medium mb-4">Restaurant créole • Fort-de-France</div>
+                    <p class="text-slate-400 mb-6 grow">Spécialités : colombo, court-bouillon, accras. Authentique et chaleureux.</p>
+                    <button class="w-full bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-4 rounded transition duration-150 ease-in-out">Voir le profil</button>
+                </article>
+
+                <article class="p-6 bg-slate-800 rounded-2xl border border-slate-700 shadow-2xl hover:border-slate-600 transition duration-300 ease-in-out flex flex-col">
+                    <div class="w-12 h-12 rounded-full bg-slate-900 flex items-center justify-center mb-4 border border-slate-700">🛒</div>
+                    <h3 class="text-xl font-bold text-white mb-2">Epice Express</h3>
+                    <div class="text-sm text-teal-400 font-medium mb-4">Épicerie locale • Lamentin</div>
+                    <p class="text-slate-400 mb-6 grow">Produits frais et locaux. Fruits, légumes pays, épices créoles.</p>
+                    <button class="w-full bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-4 rounded transition duration-150 ease-in-out">Voir le profil</button>
+                </article>
+
+                <article class="p-6 bg-slate-800 rounded-2xl border border-slate-700 shadow-2xl hover:border-slate-600 transition duration-300 ease-in-out flex flex-col">
+                    <div class="w-12 h-12 rounded-full bg-slate-900 flex items-center justify-center mb-4 border border-slate-700">🔧</div>
+                    <h3 class="text-xl font-bold text-white mb-2">TechKarib</h3>
+                    <div class="text-sm text-teal-400 font-medium mb-4">Réparation • Schoelcher</div>
+                    <p class="text-slate-400 mb-6 grow">Réparation rapide de vos appareils électroniques. Diagnostic gratuit.</p>
+                    <button class="w-full bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-4 rounded transition duration-150 ease-in-out">Voir le profil</button>
+                </article>
+            </div>
+        </section>
+
+        <section id="recherche" class="mb-24 relative">
+            <div class="absolute inset-0 bg-slate-800 rounded-3xl border border-slate-700 pointer-events-none" aria-hidden="true"></div>
+            <div class="relative py-10 px-8 md:p-14 text-center">
+                <h2 class="text-3xl font-bold text-white mb-8">Rechercher un établissement</h2>
+                
+                <form class="flex flex-col md:flex-row gap-4 max-w-4xl mx-auto">
+                    <div class="flex-1 text-left">
+                        <label for="nom-commerce" class="sr-only">Nom du commerce</label>
+                        <input type="text" id="nom-commerce" placeholder="Ex: Restaurant, Coiffeur..." class="w-full bg-slate-900 text-slate-300 border border-slate-700 focus:border-blue-500 focus:ring-1 focus:ring-blue-500 rounded-lg px-4 py-3 placeholder-slate-500 outline-none transition duration-150 ease-in-out">
+                    </div>
+                    
+                    <div class="flex-1 text-left">
+                        <label for="ville" class="sr-only">Ville</label>
+                        <select id="ville" class="w-full bg-slate-900 text-slate-300 border border-slate-700 focus:border-blue-500 focus:ring-1 focus:ring-blue-500 rounded-lg px-4 py-3 outline-none transition duration-150 ease-in-out appearance-none">
+                            <option value="">Toutes les villes</option>
+                            <option value="fort-de-france">Fort-de-France</option>
+                            <option value="lamentin">Lamentin</option>
+                            <option value="schoelcher">Schoelcher</option>
+                        </select>
+                    </div>
+                    
+                    <div class="flex-1 text-left">
+                        <label for="categorie" class="sr-only">Catégorie</label>
+                        <select id="categorie" class="w-full bg-slate-900 text-slate-300 border border-slate-700 focus:border-blue-500 focus:ring-1 focus:ring-blue-500 rounded-lg px-4 py-3 outline-none transition duration-150 ease-in-out appearance-none">
+                            <option value="">Toutes catégories</option>
+                            <option value="restaurant">Restaurants</option>
+                            <option value="epicerie">Épiceries</option>
+                            <option value="services">Services</option>
+                        </select>
+                    </div>
+                    
+                    <div class="md:w-auto mt-4 md:mt-0">
+                        <button type="submit" class="w-full bg-gradient-to-r from-teal-500 to-blue-600 hover:from-teal-400 hover:to-blue-500 text-white font-medium py-3 px-8 rounded-lg transition duration-150 ease-in-out shadow-lg">Rechercher</button>
+                    </div>
+                </form>
+            </div>
+        </section>
+
+        <section id="categories" class="mb-12 border-t border-slate-800 pt-16">
+            <h2 class="text-2xl font-bold text-white text-center mb-10">Explorer par domaine</h2>
+            
+            <div class="grid grid-cols-2 lg:grid-cols-4 gap-4">
+                <a href="#restaurants" class="p-6 bg-slate-800/50 hover:bg-slate-800 rounded-xl border border-slate-700 hover:border-blue-500 transition duration-150 ease-in-out text-center group">
+                    <div class="text-3xl mb-3 opacity-80 group-hover:opacity-100 transition">🍽️</div>
+                    <strong class="block text-slate-200 group-hover:text-blue-400 transition mb-1">Restaurants</strong>
+                    <span class="text-sm text-slate-500">42 étab.</span>
+                </a>
+                
+                <a href="#epiceries" class="p-6 bg-slate-800/50 hover:bg-slate-800 rounded-xl border border-slate-700 hover:border-blue-500 transition duration-150 ease-in-out text-center group">
+                    <div class="text-3xl mb-3 opacity-80 group-hover:opacity-100 transition">🛒</div>
+                    <strong class="block text-slate-200 group-hover:text-blue-400 transition mb-1">Épiceries</strong>
+                    <span class="text-sm text-slate-500">28 étab.</span>
+                </a>
+                
+                <a href="#beaute" class="p-6 bg-slate-800/50 hover:bg-slate-800 rounded-xl border border-slate-700 hover:border-blue-500 transition duration-150 ease-in-out text-center group">
+                    <div class="text-3xl mb-3 opacity-80 group-hover:opacity-100 transition">💇</div>
+                    <strong class="block text-slate-200 group-hover:text-blue-400 transition mb-1">Beauté</strong>
+                    <span class="text-sm text-slate-500">35 étab.</span>
+                </a>
+                
+                <a href="#services" class="p-6 bg-slate-800/50 hover:bg-slate-800 rounded-xl border border-slate-700 hover:border-blue-500 transition duration-150 ease-in-out text-center group">
+                    <div class="text-3xl mb-3 opacity-80 group-hover:opacity-100 transition">🔧</div>
+                    <strong class="block text-slate-200 group-hover:text-blue-400 transition mb-1">Services</strong>
+                    <span class="text-sm text-slate-500">51 étab.</span>
+                </a>
+            </div>
+        </section>
+
+    </main>
+
+    <footer id="contact" class="bg-slate-900 border-t border-slate-800 mt-auto">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 py-12 md:py-16">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
+                <div>
+                    <h3 class="text-white font-medium text-lg mb-4">À propos</h3>
+                    <p class="text-sm leading-relaxed">KaribConnect est un projet de l'Université des Antilles visant à propulser les commerces locaux dans l'ère numérique.</p>
+                </div>
+                
+                <div>
+                    <h3 class="text-white font-medium text-lg mb-4">Contact</h3>
+                    <ul class="text-sm space-y-2">
+                        <li><a href="mailto:contact@karibconnect.fr" class="text-teal-500 hover:text-teal-400 transition duration-150 ease-in-out">contact@karibconnect.fr</a></li>
+                        <li>0596 XX XX XX</li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="text-white font-medium text-lg mb-4">Réseaux</h3>
+                    <ul class="text-sm space-y-2">
+                        <li><a href="#" class="hover:text-white transition duration-150 ease-in-out">Twitter</a></li>
+                        <li><a href="#" class="hover:text-white transition duration-150 ease-in-out">LinkedIn</a></li>
+                        <li><a href="#" class="hover:text-white transition duration-150 ease-in-out">Instagram</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="md:flex md:items-center md:justify-between py-6 border-t border-slate-800">
+                <div class="text-sm text-slate-500 mr-4">&copy; 2026 KaribConnect. L1 Informatique - UA.</div>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
