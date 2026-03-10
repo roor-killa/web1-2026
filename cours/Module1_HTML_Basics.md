@@ -216,7 +216,7 @@ git commit -m "Initial commit: project structure"
 
     <!-- Commerce 2 : Épicerie -->
     <article>
-        <h3>🛒 Epicerie Express</h3>
+        <h3>🛒 Epice Express</h3>
         <p><strong>Catégorie :</strong> Épicerie locale</p>
         <p><strong>Adresse :</strong> 12 Avenue des Caraïbes, Lamentin</p>
         <p><strong>Horaires :</strong> Lun-Sam 7h-20h</p>
@@ -378,6 +378,31 @@ git commit -m "Initial commit: project structure"
 
 ---
 
+## ✅ Critères de validation TP1
+
+### HTML valide (obligatoire)
+- [ ] DOCTYPE HTML5 présent
+- [ ] Encodage UTF-8 déclaré
+- [ ] Balises sémantiques utilisées (header, nav, main, section, article, footer)
+- [ ] Tous les attributs obligatoires présents (alt pour img, href pour a, etc.)
+
+### Contenu minimal
+- [ ] Header avec titre et description
+- [ ] Navigation avec au moins 4 liens
+- [ ] Section hero avec présentation
+- [ ] Formulaire de recherche fonctionnel
+- [ ] 3 cartes de commerces minimum
+- [ ] Section catégories
+- [ ] Footer complet
+
+### Bonnes pratiques
+- [ ] Indentation correcte (2 ou 4 espaces)
+- [ ] Commentaires HTML pertinents
+- [ ] Attributs `id` et `name` cohérents
+- [ ] Structure hiérarchique des titres (h1 > h2 > h3)
+
+---
+
 ## 🚀 Exercices bonus (pour aller plus loin)
 
 ### Bonus 1 : Page détail commerce
@@ -411,3 +436,36 @@ Créer un fichier `commerce-detail.html` avec :
 - HTML Validator : https://validator.w3.org
 - Accessibility Checker : https://wave.webaim.org
 
+### Inspiration locale
+- bizouk.com (structure de catalogue)
+- kiprix.com (recherche et filtres)
+- madiana.com (pages produits)
+
+---
+
+## 📝 À rendre pour la prochaine séance
+
+1. **Fichier `index.html` complet** avec tous les exercices
+2. **Commit Git** avec message explicite : `"TP1: Structure HTML KaribConnect"`
+3. **Screenshot** de votre page dans le navigateur
+4. **Questions** : noter les difficultés rencontrées
+
+**Format de livraison :** 
+- Créer un repository GitHub privé
+- Inviter l'enseignant (@ roor-killa)
+- Ajouter un README.md avec screenshots
+
+---
+
+##  Prochaine séance
+
+**HTML Sémantique & Formulaires avancés**
+- Optimisation sémantique de KaribConnect
+- Formulaires multi-étapes
+- Intégration de médias (images, vidéos)
+- Tableaux de données
+
+**Préparation recommandée :**
+- Lire : MDN Forms Guide
+- Regarder : vidéo "HTML5 Semantic HTML" (20min)
+- Réfléchir : quelles améliorations pour votre page actuelle ?

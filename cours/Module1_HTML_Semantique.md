@@ -34,13 +34,13 @@
 │    <nav> Navigation </nav>  │  Menu de navigation
 ├─────────────────────────────┤
 │         <main>              │  Contenu principal unique
-│  ┌─────────────────────┐    │
-│  │   <article>         │    │  Contenu autonome
-│  │     <section>       │    │  Section thématique
-│  │     </section>      │    │
-│  │     <aside>...</aside>   │  Contenu complémentaire
-│  │   </article>        │    │
-│  └─────────────────────┘    │
+│  ┌─────────────────────┐   │
+│  │   <article>         │   │  Contenu autonome
+│  │     <section>       │   │  Section thématique
+│  │     </section>      │   │
+│  │     <aside>...</aside>  │  Contenu complémentaire
+│  │   </article>        │   │
+│  └─────────────────────┘   │
 │         </main>             │
 ├─────────────────────────────┤
 │         <footer>            │  Pied de page
@@ -750,6 +750,30 @@ Transformer votre `index.html` actuel en version ultra-sémantique :
 </html>
 ```
 
+**✅ Checkpoint :** Tester la validation du formulaire
+
+---
+
+## ✅ Critères de validation TP2
+
+### Sémantique HTML (obligatoire)
+- [ ] Toutes les balises sémantiques appropriées utilisées
+- [ ] Hiérarchie des titres respectée (pas de h3 avant h2)
+- [ ] Attributs ARIA pour l'accessibilité
+- [ ] Microdata schema.org sur les commerces
+
+### Formulaires avancés
+- [ ] Tous les types d'input HTML5 utilisés au moins une fois
+- [ ] Attributs de validation corrects (required, pattern, min/max)
+- [ ] Labels associés aux inputs (attribut `for`)
+- [ ] Messages d'aide et d'erreur pertinents
+
+### Bonnes pratiques
+- [ ] HTML valide (validator.w3.org)
+- [ ] Navigation au clavier fonctionnelle
+- [ ] Attributs `name` cohérents pour la soumission
+- [ ] Code indenté et commenté
+
 ---
 
 ## 🚀 Exercices bonus
@@ -800,4 +824,12 @@ Transformer le formulaire d'ajout en formulaire multi-étapes avec :
    - Screenshot du rapport WAVE
    - Liste des améliorations apportées
 
+---
 
+## Prochaine séance
+
+**Module 2 - CSS Fondamentaux**
+- Introduction aux sélecteurs CSS
+- Box model et positionnement
+- Premiers styles pour KaribConnect
+- Variables CSS et organisation du code
